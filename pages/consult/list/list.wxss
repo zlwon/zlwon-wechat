@@ -1,0 +1,163 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 06
+@Introduce: 咨询样式
+*/
+.box {
+  padding-bottom: 58px; 
+  box-sizing: border-box;
+}
+
+.consult {
+  box-sizing: border-box;
+  background: #eee;
+}
+
+.consult .list {
+    margin-top: 10px;
+    padding: 0 10px;
+    background: white;
+    box-sizing: border-box;
+}
+
+.consult .video {
+  height: 32px;
+  line-height: 32px;
+}
+
+.consult .list .video:first-child {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.video icon {
+  margin-right: 4px;
+  font-size: 22px;
+  color: #eee;
+  vertical-align: top;
+}
+
+.video image {
+  width: 60px;
+  height: 32px;
+}
+
+.consult .c-title {
+  height: 32px;
+  line-height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 1px solid #dcdcdc; 
+}
+
+.consult .c-txt {
+  display: -webkit-box;
+  position: relative;
+  margin-top: 5px;
+  padding-left: 72px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.consult .c-txt .video {
+  position: relative;
+  top: -6px;
+}
+
+.consult .c-txt label {
+  width: 68px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.consult .c-detail {
+  line-height: 30px;
+  margin-top: 5px;
+  text-align: center;
+  color: #888;
+  border-top: 1px solid #dcdcdc;
+}
+
+
+.send {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.send .s-input {
+  width: 70%;
+  float: left;
+  position: relative;
+  padding: 10px 12px;
+  background: #eee;
+  box-sizing: border-box;
+}
+
+.send .s-input icon {
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  text-align: center;
+  color: #999;
+  z-index: 3;
+}
+
+.send .s-input icon.font {
+  font-size: 18px;
+}
+
+.send .s-input label {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 34px;
+  text-align: center;
+  color: #777;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.send .s-input label:active {
+  background: #ddd;
+}
+
+.send .s-input input {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px 0 25px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+.send .s-button {
+  width: 30%;
+  float: right;
+}
+
+.send .s-button i {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+  background: #21AB39;
+}
+
+.send .s-button i:active {
+  background: #006600;
+}

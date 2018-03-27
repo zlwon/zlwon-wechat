@@ -1,0 +1,94 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 应用/物理详情公共部分样式表
+*/
+
+.box {
+  background: #eee;
+}
+
+.content {
+  padding: 10px 12px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.content .c-title {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+  .c-label label {
+  display: inline-block;
+  margin: 8px 10px 0 0;
+   padding: 4px 5px;
+  background: #eee;
+  box-sizing: border-box;
+  }
+
+  .c-label i {
+    margin-left: 5px;
+    vertical-align: top;
+  }
+
+.parameter {
+  display: block;
+  padding-bottom: 30px;
+  margin-top: 10px;
+  background: white;
+}
+
+.parameter .p-list {
+  display: block;
+  padding: 8px 0 8px 84px;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.p-list text {
+  width: 72px;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  text-align: right;
+}
+
+.detail {
+  margin-top: 10px;
+}
+
+.detail .tabs {
+    background: white;
+}
+
+.detail .tabs  label {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+
+.detail .tabs i {
+  display: inline-block;
+  padding: 8px 12px 4px 12px;
+  box-sizing: border-box;
+}
+
+.detail .tabs .active {
+  border-bottom: 3px solid green;
+}
+
+.detail .d-txt {
+  margin-top: 6px;
+  padding: 8px 12px; 
+  line-height: 22px;
+  background: white;
+  box-sizing: border-box;
+}
+
+

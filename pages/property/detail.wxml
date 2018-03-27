@@ -1,0 +1,45 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-05
+@Introduce:   物性详情
+l-->
+
+<import src="../../component/header.wxml"/>  
+
+<view class="box">
+  <!-- 公共头部 -->
+   <template is="header" data="{{...header}}"/>  
+
+   <!-- 内容 -->
+   <view class="content">
+    <text class="c-title">{{list.name}}</text>
+
+    <view class="{{isHidden ? 'c-label' : ''}}">
+      <label wx:for="{{label}}" wx:key="{{index}}">{{item.labelName}}<i class="green iconfont icon-ai45"></i><i class="green">{{item.hot}}</i></label>
+    </view>
+
+    <view class="c-more" bindtap="isShowLabel">{{isHidden ? '更多' : '收起'}}<i class="iconfont {{isHidden ? 'icon-tubiao-' : 'icon-shangjiantou'}}"></i></view>
+   </view>
+
+   <view class="parameter">
+      <view class="p-list"><text>生产商 : </text> {{list.manufacturer}}</view>
+
+      <view class="p-list"><text>商标 : </text> {{list.brandName}}</view>
+
+      <view class="p-list"><text>填充物 : </text> {{list.filler}}</view>
+
+      <view class="p-list"><text>阻燃等级 : </text> {{list.flameRate}}</view>
+
+      <view class="p-list"><text>安规认证 : </text> {{list.safetyCert}}</view>
+   </view>
+
+   <!-- 详情 -->
+   <view class="detail">
+    <!-- tabs -->
+    <view class="tabs clearfix">
+      <label><i class="active">物性描述</i></label>
+    </view>
+
+    <view class="d-txt">{{list.content}}</view>
+   </view>
+</view>

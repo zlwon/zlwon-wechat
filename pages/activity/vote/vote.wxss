@@ -1,0 +1,49 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 21
+@Introduce: 活动页面样式
+*/  
+
+.container {
+  height: 100%;
+  background: #eee;
+}
+
+.vote {
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #ccc;
+}
+
+.vote textarea {
+  width: 100%;
+  height: 58px;
+}
+
+.camera {
+  padding: 5px 10px;
+  box-sizing: border-box;
+  font-size: 30px;
+  color: #999;
+}
+
+.camera image {
+  width: 40px;
+  height: 40px;
+}
+
+.camera label {
+  height: 30px;
+  line-height: 30px;
+  margin-top: 6px;
+  padding: 0 15px;
+  float: right;
+  background: #fafafa;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+}
+
+.camera label:active {
+  background: #f0f0f0;
+}
+

@@ -1,0 +1,143 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 企业提问样式表
+*/
+
+.box {
+  min-height: 100vh; 
+  background: #fff;
+  padding-bottom: 38px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.tabs {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: white;
+}
+
+.tabs label {
+  width: 50%;
+  float: left
+}
+
+.tabs .active {
+  color: #21AB39;
+  border-bottom: 2px solid #21AB39;
+}
+
+.question {
+  background: #eee;
+}
+
+.question .list {
+  padding: 10px;
+  margin-top: 8px;
+  background: white;
+  box-sizing: border-box;
+}
+
+.question .l-title {
+  line-height: 34px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.question .l-txt {
+  margin: 10px 0;
+  color: #666;
+}
+
+.question .l-time {
+  height: 28px;
+  line-height: 28px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.question .l-time image {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.l-more {
+  margin-top: 5px;
+  text-align: center;
+  color: #999;
+}
+
+.answer .l-time {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.answer .l-text {
+  margin: 10px 0 0 0;
+  position: relative;
+  padding-left: 72px;
+  box-sizing: border-box;
+}
+
+.answer .l-text .darkgray {
+  color: #666;
+}
+
+.answer .l-text view:first-child {
+  width: 72px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hidden-clamp2 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.hidden-clamp3 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.video {
+  height: 32px;
+  line-height: 32px;
+}
+
+ .video.border {
+  border-bottom: 1px solid #dcdcdc;
+} 
+
+.video icon {
+  margin-right: 4px;
+  font-size: 22px;
+  color: #eee;
+  vertical-align: top;
+}
+
+.video image {
+  width: 60px;
+  height: 32px;
+}
+
+.video.relative {
+  position: relative;
+  top: -5px;
+}

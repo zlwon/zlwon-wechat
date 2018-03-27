@@ -1,0 +1,24 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-06
+@Introduce:  工程师登录
+l-->
+
+<view class="container">
+  <!-- 切换普通用户登录 -->
+   <view class="tabs"><navigator url="../../user/scan/scan" hover-class="none"><icon class="iconfont icon-user"></icon>我是普通用户</navigator></view> 
+
+  <view class="table">
+    <!-- logo -->
+    <view class="logo-image"><image src="../../../../static/images/logo.png"></image></view>
+
+    <!-- 登录信息 -->
+    <view class="login block">
+      <view class="relative"><i class="iconfont icon-yonghu"></i><input placeholder="请输入登录账号" bindinput="setAccountDate" placeholder-class="placeholder"></input></view>
+
+      <view class="relative"><i class="iconfont icon-suo"></i><input type="password" bindinput="setPassDate" placeholder="请输入登录密码" placeholder-class="placeholder"></input></view>
+
+      <view><button bindtap="confirmLogin">登录</button></view> 
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-08
+@Introduce:  普通用户手机注册
+l-->
+
+<view class="container">
+  <!-- 切换工程师登录 -->
+   <view class="tabs"><navigator url="../../engineer/login/login" hover-class="none"><icon class="iconfont icon-user"></icon>我是普通用户</navigator></view> 
+
+  <view class="table">
+    <!-- logo -->
+    <view class="logo-image"><image src="../../../../static/images/logo.png"></image></view>
+
+    <!-- 注册信息 -->
+    <view class="login block">
+      <view class="relative"><i class="iconfont icon-shouji"></i><input placeholder="请输入11位手机号" placeholder-class="placeholder" id="phone" bindblur="setPhoneDate"></input></view>
+
+      <!-- 验证码 -->
+      <view class="code">
+        <view class="c-list"><i class="iconfont icon-duihao"></i><input placeholder="4位短信验证码" placeholder-class="placeholder" maxlength="6" bindblur="setCodeDate"></input></view>
+
+        <!-- 发送按钮 -->
+        <view class="c-list" hidden="{{countDown < 61}}" bindtap="getSms"><label class="first">获取验证码</label></view>
+
+         <view hidden="{{countDown === 61}}" class="c-list"><label>{{countDown}} 秒后重新获取</label></view> 
+      </view>
+
+      <view class="relative"><i class="iconfont icon-tubiao209"></i><input placeholder="常用邮箱(非必填)" placeholder-class="placeholder" bindblur="setEmailDate"></input></view>
+
+      <view><button bindtap="confirmRegister">注册</button></view>
+    </view>
+  </view>
+</view>

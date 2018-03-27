@@ -1,0 +1,155 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 咨询回答详情样式表
+*/
+
+.question {
+  padding: 10px;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+.question .q-title {
+  display: block;
+  line-height: 34px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.question .q-time {
+  height: 28px;
+  line-height: 28px;
+  margin-bottom: 6px;
+}
+
+.question .q-time image {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.q-txt {
+  line-height: 26px;
+  color: #666;
+  word-break: break-all;
+}
+
+.answer {
+  position: relative;
+  padding: 8px 10px 58px 82px;
+  border-top: 1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+.answer .darkgray {
+  color: #666;
+}
+
+.answer>view:first-child {
+  width: 72px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.send {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.send .s-input {
+  width: 70%;
+  float: left;
+  position: relative;
+  padding: 10px 12px;
+  background: #eee;
+  box-sizing: border-box;
+}
+
+.send .s-input icon {
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  text-align: center;
+  color: #999;
+  z-index: 3;
+}
+
+.send .s-input input {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px 0 25px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+.send .s-button {
+  width: 30%;
+  float: right;
+}
+
+.send .s-button i {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+  background: #21AB39;
+}
+
+.send .s-button i:hover {
+  background: #006600;
+}
+
+.send .s-input label {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 34px;
+  text-align: center;
+  color: #777;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.send .s-input label:active {
+  background: #ddd;
+}
+
+.video {
+  height: 32px;
+  line-height: 32px;
+}
+
+.video.relative {
+  position: relative;
+  top: -4px;
+}
+
+.video icon {
+  margin-right: 4px;
+  font-size: 22px;
+  color: #eee;
+  vertical-align: top;
+}
+
+.video image {
+  width: 60px;
+  height: 32px;
+}

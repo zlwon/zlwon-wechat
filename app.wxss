@@ -1,0 +1,76 @@
+/*
+* @Author:       陆飞
+*@Date:           2018-03-05
+*@Introduce:  公共样式表
+* */
+@import "/static/icon/icon.wxss";
+
+page {height: 100%; font-size: 14px; color: #333; font-family: Microsoft YaHei,'宋体',Tahoma,Arial,sans-serif;}
+
+.clearfix:after{content: ""; display: block; visibility: hidden; height: 0; clear: both;}
+.clearfix{zoom: 1;}
+
+.fl { float: left;}
+.fr { float: right;}
+.fn { float: none;}
+
+.hide{display: none;}
+.inline{display: inline-block;}
+.block{display: block;}
+.relative{position: relative;}
+
+.txtL { text-align: left;}
+.txtC { text-align: center;}
+.txtR { text-align: right;}
+
+.weight{font-weight: bold;}
+.f-s-n{font-style: normal;}
+.weight-n{font-weight: normal!important;}
+
+.b-n{border: none!important;}
+.b-t-n{border-top: none!important;}
+.b-l-n{border-left: none!important;}
+.b-r-n{border-right: none!important;}
+.b-m-n{border-bottom: none!important;}
+
+.p-n {padding: 0!important;}
+.p-l-n {padding-left: 0;}
+.p-t-n {padding-top: 0;}
+.p-r-n {padding-right: 0;}
+.p-b-n {padding-bottom: 0;}
+
+.m-n {margin: 0!important;}
+.m-t-n {margin-top: 0!important;}
+.m-r-n {margin-right: 0!important;}
+.m-b-n {margin-bottom: 0!important;}
+
+.bg-white { background-color: #fff;}
+.bg-green {background-color: #21ab39;}
+
+.white { color: #fff;}
+.green { color: #21ab39;}
+.gray { color: #999}
+
+.full{width: 100%;}
+.half{width: 50%;}
+.quarter{width: 25%;}
+.twenty{width: 20%;}
+
+.ver-t{vertical-align: top}
+.ver-m{vertical-align: middle}
+
+.overflow{overflow: hidden;}
+.overflow-y{overflow-y: auto;}
+.overflow-x{overflow-x: auto;}
+.overflow-point{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+/* 公共头部组件样式 */
+.header {position: fixed; width: 100%; height: 50px; line-height: 50px; padding: 0 6px; left: 0; top: 0; text-align: center; color: #999; background: white; font-size: 24px; box-sizing: border-box; z-index: 12;}
+.header.border {border-bottom: 1px solid #dcdcdc;}
+.header i:active{color: #21ab39;}
+.logo {display: inline-block; width: 61px; height: 34px; vertical-align: middle;}
+
+/* 公共站底组件样式 */
+.footer {width: 100%; text-align: center; position: absolute; bottom: 10px; left: 0; color: #999; z-index: 2;}
+
+.box {padding-top: 50px;}

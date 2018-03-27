@@ -1,0 +1,19 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-21
+@Introduce:  活动投票页面
+l-->
+
+<view class="container">
+  <!-- 头部 -->
+  <!-- <view class="head">
+    <icon class="iconfont icon-arrowleft"></icon>
+  </view> -->
+
+  <!-- 选择照片 -->
+  <view class="bg-white">
+    <view class="vote"><textarea bindinput="inputContent" maxlength="50" placeholder="想说点啥..."></textarea></view>
+    
+    <view class="camera"><icon hidden="{{image !== ''}}" class="ver-t iconfont weight icon-tianjiazhaopian" bindtap="chooseImage"></icon><image src="{{image}}" bindtap="previewImage"></image><label bindtap="addVote">发送</label></view>
+  </view>
+</view>

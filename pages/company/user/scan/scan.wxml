@@ -1,0 +1,61 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-06
+@Introduce:  普通用户扫码注册
+l-->
+
+<view class="container" wx:if="{{!state}}">
+  <!-- 切换普通用户登录 -->
+  <view class="tabs"><navigator url="../../engineer/login/login" hover-class="none"><icon class="iconfont icon-user"></icon>我是工程师</navigator></view>
+
+  <view class="table">
+    <!-- logo -->
+    <view class="logo-image"><image src="../../../../static/images/logo.png"></image></view>
+
+    <!-- 扫码 -->
+    <view class="saoma"><icon bindtap="scanCode" class="iconfont icon-saoma"></icon></view>
+
+    <view class="prompt">
+      <i class="green">名片扫一扫,快速注册</i>
+    
+      <i class="block gray">或</i>
+
+      <navigator class="inline" url="../register/register" hover-class="green">通过手机注册</navigator>
+
+      <i class="gray margin">/</i>
+
+      <navigator class="inline" url="../login/login" hover-class="green">已有账号</navigator>
+    </view>
+  </view>
+</view>
+
+
+<view wx:if="{{state}}" class="container1">
+  <!-- logo -->
+  <view class="logo-image"><image src="../../../../static/images/logo.png"></image></view> 
+
+  <!-- 认证信息 -->
+  <view class="confirm">
+    <view class="green weight">扫描结果如下，确认无误后提交注册：</view>
+
+    <view class="list">
+      <view>
+        <!-- 默认状态 -->
+        <view class="default" hidden="{{edit[0]}}"><i>手机 : </i>{{phone}}<icon class="iconfont icon-bianji" data-count="0" bindtap="editInfo"></icon></view>
+
+        <!-- 编辑状态 -->
+        <view class="edit" hidden="{{!edit[0]}}"><i>手机 :</i><input value="{{phone}}" bindblur="inputPhone"></input><icon class="iconfont icon-close" data-count="0" bindtap="editInfo"></icon></view>
+      </view>
+
+      <view>
+       <!-- 默认状态 -->
+        <view class="default" hidden="{{edit[1]}}"><i>邮箱 : </i>{{email}}<icon class="iconfont icon-bianji" data-count="1" bindtap="editInfo"></icon></view>
+
+        <!-- 编辑状态 -->
+        <view class="edit" hidden="{{!edit[1]}}"><i>邮箱 :</i><input value="{{email}}" bindblur="inputEmail"></input><icon class="iconfont icon-close" data-count="1" bindtap="editInfo"></icon></view>
+      </view>
+    </view>
+
+    <view class="register"><button bindtap="confirmRegister">确认注册</button></view>
+  </view>
+</view>

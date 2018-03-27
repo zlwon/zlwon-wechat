@@ -1,0 +1,39 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 08
+@Introduce: 普通用户手机注册样式表
+*/
+
+@import "../../engineer/login/login.wxss";
+
+.code {
+  display: flex;
+  height: 40px;
+}
+
+.code .c-list {
+  flex: 1;
+}
+
+.code .c-list:first-child {
+  position: relative;
+  margin-right: 10px;
+}
+
+.code .c-list label {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+.code .c-list .first {
+  background: white;
+}
+
+.code .c-list .first:active {
+  background: none;
+}

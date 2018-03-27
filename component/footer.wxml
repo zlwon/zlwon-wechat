@@ -1,0 +1,9 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-05
+@Introduce:  公共站底组件
+l-->
+
+<template name="footer">
+  <view class="footer">©zlwon.com</view>
+</template>  

@@ -1,0 +1,176 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 应用详情样式表
+*/
+
+.box {
+  background: #eee;
+}
+
+.images swiper {
+  height: 226px;
+}
+
+.images image {
+  width: 100%;
+  height: 226px;
+  background: white;
+}
+
+.content {
+  padding: 10px 12px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.content .c-title {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c-time {
+  margin-top: 10px;
+  }
+
+.c-time image{
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+  .c-time .c-info {
+    display: inline-block;
+    line-height: 44px;
+    margin-left: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  .tools {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+  }
+
+  .tools .t-list {
+    width: 36%;
+    float: left;  
+    position: relative;
+    color: white;
+    text-align: center;
+  }
+
+  .tools .t-list:first-child {
+    width: 28%;
+    color: #333;
+    background: #eee;
+  }
+
+  .t-list.bg-orange {
+    background: #FF9900;
+  }
+
+    .t-list.bg-drakgreen {
+    background: #58DE70;
+  }
+
+  .t-list i {
+    display: inline-block;
+    margin-right: 4px; 
+    font-size: 18px;
+  }
+
+  .tools i.font {
+    font-size: 30px;
+  }
+
+  .tools .t-list i.orange {
+    color: #ff7200;
+  }
+
+  .tools .hover::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.1);
+  }
+
+.parameter {
+  display: block;
+  padding-bottom: 30px;
+  margin-top: 10px;
+  background: white;
+}
+
+.parameter .p-list {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 6px 0 84px;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.p-list text {
+  width: 72px;
+  height: 36px;
+  line-height: 36px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: right;
+}
+
+.detail {
+  margin-top: 10px;
+}
+
+.detail .tabs {
+    background: white;
+}
+
+.detail .tabs  label {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+
+.detail .tabs i {
+  display: inline-block;
+  padding: 8px 12px 4px 12px;
+  box-sizing: border-box;
+}
+
+.detail .tabs .active {
+  border-bottom: 3px solid #21AB39;
+}
+
+.detail .d-txt {
+  margin-top: 6px;
+  padding: 8px 12px 56px 12px; 
+  line-height: 22px;
+  background: white;
+  box-sizing: border-box;
+  white-space: pre-line;
+}

@@ -1,0 +1,97 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-22
+@Introduce:  首页
+l-->
+
+ <import src="../../component/header.wxml"/> 
+
+ <view class="box">
+  <!-- 公共头部 -->
+  <template is="header" data="{{...header}}"/> 
+
+  <!-- 横幅 -->
+  <view class="banner"><image mode="cneter" src="../../static/images/banner.jpg"></image></view>
+
+  <!-- 轮播 -->
+  <view class="carousel">
+      <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
+         <block>
+          <swiper-item>
+            <navigator url="../exhibition/exhibition" hover-class="none"><image src="../../static/images/banner1.jpg" class="slide-image"/></navigator>
+          </swiper-item>
+        </block>
+     </swiper>
+  </view>
+
+  <!-- 流程 -->
+  <view class="process">
+    <view class="title">注册步骤</view>
+
+    <view class="step">
+      <view class="p-list long"><i class="iconfont icon-saoma1"></i><text>点击下方按钮扫扫名片</text></view>
+
+      <view class="p-list short"><i class="iconfont icon-arrow-right-copy-copy-copy"></i></view>
+
+      <view class="p-list long"><i class="iconfont icon-zhuce"></i><text>提交资料快速注册</text></view>
+
+      <view class="p-list short"><i class="iconfont icon-arrow-right-copy-copy-copy"></i></view>
+
+      <view class="p-list long"><i class="iconfont icon-msnui-success"></i><text>注册成功,扫展品,玩活动</text></view>
+    </view>
+    
+  </view>
+
+  <!-- 活动 -->
+  <view class="activity">
+    <view class="a-list">
+      <navigator class="clearfix" url="../exhibition/exhibition" hover-class="none">
+        <view class="red">最美展女郎</view>
+
+        <view class="gray">人美,声甜,气质佳...</view>
+
+        <view><text class="red weight">606人</text>访问过 > </view>
+
+        <image class="first" mode="right" src="../../static/images/beauty.png"></image>
+      </navigator>
+    </view>
+    
+    <view class="a-list">
+      <navigator class="clearfix" hover-class="none" url="../activity/list/list?aid=2">
+        <view class="red">最炫展品</view>
+
+        <view class="gray">够酷,够炫,够装逼...</view>
+
+        <view><text class="red weight">606人</text>在参加 > </view>
+
+        <image class="second" mode="center" src="../../static/images/exhibits.png"></image>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- 展商 -->
+  <view class="exhibition">
+    <view class="title">热门展商</view>
+
+    <scroll-view class="e-list" scroll-x="true">
+      <view><image mode="center" src="../../static/images/trademark1.png"></image><text class="block">7.2J81</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark2.png"></image><text class="block">7.2D41</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark3.png"></image><text class="block">7.2B61</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark4.png"></image><text class="block">82E63</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark1.png"></image><text class="block">7.2J81</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark2.png"></image><text class="block">7.2D41</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark3.png"></image><text class="block">7.2B61</text></view>
+
+      <view><image mode="center" src="../../static/images/trademark4.png"></image><text class="block">82E63</text></view>
+    </scroll-view>
+  </view>
+
+  <!-- 扫码 -->
+  <navigator hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-qr-code"></i>扫名片快速注册</navigator>
+ </view>

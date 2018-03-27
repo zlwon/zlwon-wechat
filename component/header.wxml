@@ -1,0 +1,16 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-05
+@Introduce:  公共头部组件
+l-->
+
+<template name="header">
+  <view class="header clearfix {{border ? 'border' : ''}}">
+    <!-- 返回首页 -->
+    <i class="fl iconfont {{heardClass}}" bindtap="hearTap"></i>
+
+    <image class='logo' src='/static/images/logo.jpg'></image>
+
+    <i class="fr iconfont {{meunClass}}" bindtap="meunTap"></i>
+  </view>
+</template >

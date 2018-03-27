@@ -1,0 +1,36 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-08
+@Introduce:  现场工程师介绍
+l-->
+
+ <import src="../../../../component/header.wxml"/> 
+
+<view class="box">
+  <!-- 公共头部 -->
+  <template is="header" data="{{...header}}"/> 
+
+  <!-- 信息 -->
+  <view class="engineer">
+    <view class="portrait">
+      <image src="{{list.headerimg === '' ? '../../../../static/images/portrait.jpg' : list.headerimg}}" mode="top"></image>  
+
+      <i class="iconfont icon-huangguan grade{{list.role}}"></i>
+    </view>
+
+    <!-- 姓名 -->
+    <view class="info name"><text>{{list.name}}</text></view>
+
+    <view class="info gray"><text>{{list.intro}}</text></view>
+  </view>
+
+  <!-- 个人介绍 -->
+  <view class="introduce">
+    <view class="i-title"><text class="bg-white">个人介绍</text></view>
+
+    <view class="i-txt">{{list.myinfo}}</view>
+  </view>
+
+  <!-- 电话 -->
+  <view class="tel" data-phone="{{list.mobile}}" bindtap="callPhone"><view><i class="iconfont icon-dianhua"></i></view></view>
+</view>

@@ -1,0 +1,132 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 普通用户扫码注册样式表
+*/
+
+.container {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background: #F6F6F6;
+  box-sizing: border-box;
+}
+
+.container1 {
+  min-height: 100%;
+  padding: 8px 15px;
+  background: #F6F6F6;
+  box-sizing: border-box;
+}
+
+.tabs {
+  width: 100%;
+  position: absolute;
+  text-align: right;
+  top: 10px;
+  right: 12px;
+}
+
+.table {
+  display: table-cell;
+  width: 100%;
+  padding: 0 12px;
+  vertical-align: middle;
+}
+
+.tabs icon {
+  margin-right: 5px;
+  color: #00863B;
+}
+
+.logo-image {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.logo-image image {
+  display: inline-block;
+  width: 162px;
+  height: 92px;
+}
+
+.saoma {
+  text-align: center;
+}
+
+.saoma icon {
+  font-size: 140px;
+  color: #999;
+}
+
+.prompt {
+  line-height: 40px;
+  text-align: center;
+}
+
+.prompt i.margin {
+  margin: 0 5px;
+}
+
+.confirm .list {
+  line-height: 35px;
+  padding: 10px 10px 30px 10px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.confirm .list icon {
+  position: absolute;
+  color: #999;
+  top: 0;
+  right: 10px;
+}
+
+.confirm .list i {
+  display: inline-block;
+  width: 15%;
+}
+
+.confirm .list .default {
+  line-height: 35px;
+  padding-right: 10%;
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.confirm .list .edit {
+  position: relative;
+}
+
+.list .edit input {
+  display: inline-block;
+  width: 85%;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 14% 0 8px;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.list .edit input:hover {
+  box-shadow: 0 0 6px 1px #dcdcdc inset;
+}
+
+.register button {
+  width: 55%;
+  height: 40px;
+  line-height: 38px;
+  margin-top: 20px;
+  color: white;
+  background: #00863B;
+  -webkit-appearance: none;
+}
+
+.register button:active {
+  background: #003300;
+}
