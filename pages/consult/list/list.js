@@ -137,8 +137,19 @@ Page({
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
-    app.isLogin({success: function () {
-      wx.redirectTo({url: '/pages/company/questions/questions'})
+    app.isLogin({success: function (entryKey) {
+      //获取用户类型
+      wx.request({
+        method: 'GET',
+        url: '' + app.basicUrl + '/customer/judgeUserRoleByEntryKey?entryKey=' + entryKey + '',
+        success: function (response) {
+          if (response.data.code === '000000') {
+            if (response.data.dat === '1') {
+              wx.redirectTo({ url: '/pages/company/questions/questions' })
+            }
+          }
+        }
+      })
     }});
   },
   
@@ -226,7 +237,7 @@ Page({
                 method: 'POST',
                 header: { 'content-type': 'application/x-www-form-urlencoded' },
                 url: '' + app.basicUrl + '/consultation/addConsultationByUser',
-                data: { entryKey: entryKey, cid: cid, title: '', content: that.data.consult, contentVoice: JSON.parse(result.data).data},
+                data: { entryKey: entryKey, cid: cid, title: '', content: that.data.consult, contentVoice: JSON.parse(result.data).data.mappingUrl},
                 success: function (response) {
                   wx.hideLoading()
                   if (response.data.code === '000000') {

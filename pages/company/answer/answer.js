@@ -42,8 +42,6 @@ Page({
         url: '' + app.basicUrl + '/consultation/queryConsultationById/' + that.data.id + '/' + entryKey+'',
         success: function (response) {
           if (response.data.code === '000000') {
-            response.data.data.createTime = app.formatDate(response.data.data.createTime)
-            response.data.data.replyTime = app.formatDate(response.data.data.replyTime)
             that.setData({list: response.data.data})
           }
         }
@@ -149,7 +147,7 @@ Page({
               method: 'POST',
               header: { 'content-type': 'application/x-www-form-urlencoded' },
               url: '' + app.basicUrl + '/consultation/replyConsultation',
-              data: { entryKey: entryKey, consultationId: that.data.id, replyCont: '', replyContVoice: response.data.data },
+              data: { entryKey: entryKey, consultationId: that.data.id, replyCont: '', replyContVoice: JSON.parse(response.data).data.mappingUrl },
               success: function (response) {
                 wx.hideLoading()
                 if (response.data.code === '000000') {
@@ -177,34 +175,36 @@ Page({
   //提交工程师回答
   submitAnswer: function () {
     const that= this;
-    wx.getStorage({
-      key: 'entryKey',
-      success: function(res) {
-        wx.request({
-          method: 'POST',
-          header: { 'content-type': 'application/x-www-form-urlencoded' },
-          url: '' + app.basicUrl + '/consultation/replyConsultation',
-          data: { entryKey: res.data, consultationId: that.data.id, replyCont: that.data.answer, replyContVoice: '' },
-          success: function (response) {
-            if (response.data.code === '000000') {
-              wx.showToast({ title: '提交成功', icon: 'none' });
-              setTimeout(() => { wx.redirectTo({ url: '/pages/company/questions/questions' }) }, 1500)
-            } else if (response.data.code === '000008') {
-              wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-              setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan' }) }, 1500)
-            } else {
-              wx.showToast({ title: response.data.message, icon: 'none' });
+    if (!that.data.voice && that.data.answer !== '') {
+      wx.getStorage({
+        key: 'entryKey',
+        success: function (res) {
+          wx.request({
+            method: 'POST',
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+            url: '' + app.basicUrl + '/consultation/replyConsultation',
+            data: { entryKey: res.data, consultationId: that.data.id, replyCont: that.data.answer, replyContVoice: '' },
+            success: function (response) {
+              if (response.data.code === '000000') {
+                wx.showToast({ title: '提交成功', icon: 'none' });
+                setTimeout(() => { wx.redirectTo({ url: '/pages/company/questions/questions' }) }, 1500)
+              } else if (response.data.code === '000008') {
+                wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
+                setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan' }) }, 1500)
+              } else {
+                wx.showToast({ title: response.data.message, icon: 'none' });
+              }
+            },
+            fail: function () {
+              wx.showToast({ title: '提交失败', icon: 'none' });
             }
-          },
-          fail: function () {
-            wx.showToast({ title: '提交失败', icon: 'none' });
-          }
-        })
-      },
-      fail: function () {
-        wx.showToast({ title: '提交失败,请稍后重试', icon: 'none' });
-      }
-    })
+          })
+        },
+        fail: function () {
+          wx.showToast({ title: '提交失败,请稍后重试', icon: 'none' });
+        }
+      })
+    }
   },
 
     //点击播放录音

@@ -117,7 +117,18 @@ Page({
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
     app.isLogin({success: function (entryKey) {
-      wx.redirectTo({ url: '../company/questions/questions'})
+      //获取用户类型
+      wx.request({
+        method: 'GET',
+        url: '' + app.basicUrl + '/customer/judgeUserRoleByEntryKey?entryKey=' + entryKey + '',
+        success: function (response) {
+          if (response.data.code === '000000') {
+            if (response.data.dat === '1') {
+              wx.redirectTo({ url: '/pages/company/questions/questions' })
+            }
+          }
+        }
+      })
     }})
   },
 
@@ -196,7 +207,7 @@ Page({
 
   tapLeavel: function (e) {
     let count = this.data.count, startX = parseInt(this.data.pageX), lastX = parseInt(e.changedTouches[0].pageX);
-    startX - lastX >= 28 ? count++ : -(startX - lastX) >= 28 ? count -- : '';
+    startX - lastX >= 48 ? count++ : -(startX - lastX) >= 48 ? count -- : '';
     count > 2 ? this.setData({ count: 0 }) : count < 0 ? this.setData({ count: 2 }) : this.setData({count: count});
   }
 })

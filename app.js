@@ -18,9 +18,9 @@ App({
         //是否显示提示语句
         if (elem.prompt) {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.reLaunch({ url: '/pages/company/user/scan/scan'}) }, 1500)
+          setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan'}) }, 1500)
         } else {
-          wx.reLaunch({ url: '/pages/company/user/scan/scan'})
+          wx.redirectTo({ url: '/pages/company/user/scan/scan'})
         }
       }
     })

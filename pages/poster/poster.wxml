@@ -1,0 +1,9 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-27
+@Introduce:   小程序海报
+l-->
+
+<view>
+  <image style="width: 100%" wx:for="{{20}}" wx:key="{{index}}" mode="widthFix" src="https://api.zlwon.com/upload/15221/{{index + 1}}.jpg"></image>
+</view>

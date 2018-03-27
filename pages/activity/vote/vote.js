@@ -94,7 +94,7 @@ Page({
           success: function (result) {
             wx.hideLoading();
             if (JSON.parse(result.data).code === '000000') {
-              that.setData({ image: JSON.parse(result.data).data})
+              that.setData({ image: JSON.parse(result.data).data.mappingUrl})
             } else {
               wx.showToast({ title: result.data.message, icon: 'none' });
             }

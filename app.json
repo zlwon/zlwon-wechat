@@ -16,12 +16,13 @@
     "pages/activity/list/list",
     "pages/activity/vote/vote",
     "pages/company/user/info/info",
-    "pages/error/error"
+    "pages/error/error",
+    "pages/poster/poster"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "塑胶展小助手",
+    "navigationBarTitleText": "橡塑展小助手",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#eee"
   }

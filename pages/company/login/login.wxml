@@ -14,9 +14,9 @@ l-->
 
     <!-- 登录信息 -->
     <view class="login block">
-      <view class="relative"><i class="iconfont icon-yonghu"></i><input placeholder="请输入登录账号" bindinput="setAccountDate" placeholder-class="placeholder"></input></view>
+      <view class="relative"><i class="iconfont icon-yonghu"></i><input placeholder="请输入登录账号" bindinput="setAccountDate" placeholder-class="placeholder" bindconfirm="confirmLogin" confirm-type="done"></input></view>
 
-      <view class="relative"><i class="iconfont icon-suo"></i><input type="password" bindinput="setPassDate" placeholder="请输入登录密码" placeholder-class="placeholder"></input></view>
+      <view class="relative"><i class="iconfont icon-suo"></i><input type="password" bindinput="setPassDate" placeholder="请输入登录密码" placeholder-class="placeholder" bindconfirm="confirmLogin" confirm-type="done"></input></view>
 
       <view><button bindtap="confirmLogin">登录</button></view> 
     </view>

@@ -15,7 +15,7 @@ l-->
       <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
         <block>
           <swiper-item>
-            <image src="../../../static/images/banner2.jpg" class="slide-image"/>
+            <image src="https://api.zlwon.com/upload/15221/banner2.jpg" class="slide-image"/>
           </swiper-item>
         </block>
       </swiper>
@@ -64,7 +64,7 @@ l-->
 
         <view class="{{!item.isShow ? 'hidden-clamp3' : ''}}">{{item.title}}</view>
 
-        <image bindtap="previewImage" data-image="{{item.photo}}" mode="center" src="{{item.photo}}"></image>
+        <image bindtap="previewImage" data-image="{{item.photo}}"  mode="widthFix" src="{{item.photo}}"></image>
       </view>
 
       <view class="tools"><text class="fl">{{item.createTime}}</text><i bindtap="showComment" data-id="{{item.id}}" class="iconfont icon-zixun1"></i><i data-count="{{index}}" class="iconfont icon-ai45 {{item.isComment ? 'green' : ''}}" data-id="{{item.id}}" bindtap="setComment"></i>{{item.supportNums}}</view>

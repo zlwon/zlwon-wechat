@@ -128,6 +128,7 @@ Page({
           name: 'file',
           success: function (result) {
             if (JSON.parse(result.data).code === '000000') {
+              console.log(result.data);
               //上传成功请求ocr
               wx.request({
                 method: 'POST',
@@ -135,13 +136,13 @@ Page({
                 url: '' + app.basicUrl + '/scanCard/scanBaiduCloudOcr',
                 data: { url: JSON.parse(result.data).data.mappingUrl, languageType: 'CHN_ENG', detectDirection: false, detectLanguage: false, probability: false, accessToken: that.data.token },
                 success: function (response) {
-                  console.log(JSON.stringify(response.data));
+                  console.log(JSON.stringify(response.data))
                   wx.hideLoading();
                   if (response.data.code === '000000') {
                     if (response.data.data.mobile === null && response.data.data.mail === null) {
                       wx.showToast({ title: '扫描失败,请将名片靠近手机重试一下', icon: 'none' })
                     }else {
-                      that.setData({ state: true, phone: response.data.data.mobile, email: response.data.data.mail, remark: response.data.data.remark, imageUrl: JSON.parse(result.data).data.mappingUrl })
+                      that.setData({ state: true, phone: response.data.data.mobile || '', email: response.data.data.mail || '', remark: response.data.data.remark, imageUrl: JSON.parse(result.data).data.mappingUrl })
                     }
                   }else {
                     wx.showToast({title: response.data.message, icon: 'none'})

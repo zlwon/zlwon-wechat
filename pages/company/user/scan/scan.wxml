@@ -13,10 +13,10 @@ l-->
     <view class="logo-image"><image src="../../../../static/images/logo.png"></image></view>
 
     <!-- 扫码 -->
-    <view class="saoma"><icon bindtap="scanCode" class="iconfont icon-saoma"></icon></view>
+    <view class="saoma"><icon bindtap="scanCode" class="iconfont icon-paizhao"></icon></view>
 
     <view class="prompt">
-      <i class="green">名片扫一扫,快速注册</i>
+      <i class="green">拍一拍名片,快速注册</i>
     
       <i class="block gray">或</i>
 

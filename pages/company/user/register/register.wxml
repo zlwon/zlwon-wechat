@@ -14,11 +14,11 @@ l-->
 
     <!-- 注册信息 -->
     <view class="login block">
-      <view class="relative"><i class="iconfont icon-shouji"></i><input placeholder="请输入11位手机号" placeholder-class="placeholder" id="phone" bindblur="setPhoneDate"></input></view>
+      <view class="relative"><i class="iconfont icon-shouji"></i><input placeholder="请输入11位手机号" placeholder-class="placeholder" id="phone" bindinput="setPhoneDate" bindconfirm="confirmRegister" confirm-type="done"></input></view>
 
       <!-- 验证码 -->
       <view class="code">
-        <view class="c-list"><i class="iconfont icon-duihao"></i><input placeholder="4位短信验证码" placeholder-class="placeholder" maxlength="6" bindblur="setCodeDate"></input></view>
+        <view class="c-list"><i class="iconfont icon-duihao"></i><input placeholder="4位短信验证码" placeholder-class="placeholder" maxlength="6" bindinput="setCodeDate" bindconfirm="confirmRegister" confirm-type="done"></input></view>
 
         <!-- 发送按钮 -->
         <view class="c-list" hidden="{{countDown < 61}}" bindtap="getSms"><label class="first">获取验证码</label></view>

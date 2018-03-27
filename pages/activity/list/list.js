@@ -44,7 +44,7 @@ Page({
           url: '' + app.basicUrl + '/voteActivity/queryVoteActivityById?id=' + that.data.aid+'&entryKey=' + entryKey+'',
           success: function (response) {
             if (response.data.code === '000000') {
-              that.setData({ imageList: response.data.data.photo.split(',')})
+              // that.setData({ imageList: response.data.data.photo.split(',')})
             }
           }
         })

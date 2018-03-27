@@ -36,8 +36,21 @@ Page({
           url: '' + app.basicUrl + '/customer/queryUserInfoByEntryKey?entryKey=' + res.data+'',
           success: function (response) {
             if (response.data.code === '000000') {
-              if (response.data.data.mobile === '' || response.data.data.mobile === null || response.data.data.email === '' || response.data.data.email === null) {
-                wx.redirectTo({url: '../company/user/info/info'})
+              if (response.data.data.email === '' || response.data.data.email === null) {
+                wx.getStorage({
+                  key: 'count',
+                  success: function(res) {
+                    if ((new Date().getTime() - parseInt(res.data)) / 3600000 > 24) {
+                      console.log((new Date().getTime() - parseInt(res.data)) / 3600000)
+                      wx.navigateTo({ url: '../company/user/info/info' })
+                    }
+                    wx.setStorage({key: 'count',data: new Date().getTime()})
+                  },
+                  fail: function () {
+                    wx.setStorage({ key: 'count', data: new Date().getTime() })
+                    wx.navigateTo({ url: '../company/user/info/info'})
+                  }
+                })
               }
             }
           }

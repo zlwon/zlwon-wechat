@@ -6,60 +6,48 @@ l-->
 
  <view class="{{type !== '0' ? 'container' : ''}}">
   <!-- 横幅 -->
-  <view class="banner"><image mode="widthFix" src="../../static/images/banner.jpg"></image></view>
+   <view class="banner"><navigator hover-class="" url="../poster/poster"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/banner.jpg"></image></navigator></view>  
 
   <!-- 轮播 -->
   <view class="carousel">
       <swiper style="height:{{imageHeight}}" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
          <block>
           <swiper-item>
-            <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="../../static/images/banner1.jpg" class="slide-image"/></navigator>
+            <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="https://api.zlwon.com/upload/15221/banner1.jpg" class="slide-image"/></navigator>
           </swiper-item>
         </block>
      </swiper>
   </view>
 
-  <!-- 流程 -->
-  <view class="process">
-    <view class="title">注册步骤</view>
-
-    <view class="step">
-      <view class="p-list long"><i class="iconfont icon-saoma1"></i><text>点击下方按钮扫扫名片</text></view>
-
-      <view class="p-list short"><i class="iconfont icon-arrow-right-copy-copy-copy"></i></view>
-
-      <view class="p-list long"><i class="iconfont icon-zhuce"></i><text>提交资料快速注册</text></view>
-
-      <view class="p-list short"><i class="iconfont icon-arrow-right-copy-copy-copy"></i></view>
-
-      <view class="p-list long"><i class="iconfont icon-msnui-success"></i><text>注册成功,扫展品,玩活动</text></view>
-    </view>
-    
-  </view>
-
   <!-- 活动 -->
   <view class="activity">
+    <view class="prize">
+      <view class="title">参与活动赢奖品</view>
+
+      <image mode="widthFix" src="https://api.zlwon.com/upload/15221/activity.jpg"></image>
+    </view>
+
     <view class="a-list">
       <navigator class="clearfix" url="../error/error" hover-class="none">
-        <view class="">最美展女郎</view>
+        <view class="">评选最美展女郎</view>
 
-        <view class="gray">人美,声甜,气质佳...</view>
+        <view class="gray overflow-point">展商小姐姐晒美照喽，快来围观啦</view>
 
-        <view><text class="green weight">606人</text>访问过 > </view>
+        <view><text class="green weight">0人</text>访问过 > </view>
 
-        <image class="first" src="../../static/images/beauty.png" style="width: {{imageWidth[0]}}px" data-count="0" bindload="adaptableWidth"></image>
+        <image class="first" src="https://api.zlwon.com/upload/15221/beauty.png" style="width: {{imageWidth[0]}}px" data-count="0" bindload="adaptableWidth"></image>
       </navigator>
     </view>
     
     <view class="a-list">
       <navigator class="clearfix" hover-class="none" url="../error/error">
-        <view class="">最炫展品</view>
+        <view class="">寻找最炫酷展品</view>
 
-        <view class="gray">够酷,够炫,够装逼...</view>
+        <view class="gray overflow-point">人人都能参与的"寻宝"活动拍名片按钮改成“拍名片快速注册”</view>
 
-        <view><text class="green weight">606人</text>在参加 > </view>
+        <view><text class="green weight">0人</text>在参加 > </view>
 
-        <image class="second" src="../../static/images/exhibits.png" style="width: {{imageWidth[1]}}px" data-count="1" bindload="adaptableWidth"></image>
+        <image class="second" src="https://api.zlwon.com/upload/15221/exhibits.png" style="width: {{imageWidth[1]}}px" data-count="1" bindload="adaptableWidth"></image>
       </navigator>
     </view>
   </view>
@@ -69,21 +57,21 @@ l-->
     <view class="title">热门展商</view>
 
     <scroll-view class="e-list" scroll-x="true">
-      <view><image mode="center" src="../../static/images/trademark1.png"></image><text class="block">7.2J81</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark1.png"></image><text class="block">7.2J81</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark2.png"></image><text class="block">7.2D41</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark2.png"></image><text class="block">7.2D41</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark3.png"></image><text class="block">7.2B61</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark3.png"></image><text class="block">7.2B61</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark4.png"></image><text class="block">82E63</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark4.png"></image><text class="block">82E63</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark1.png"></image><text class="block">7.2J81</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark1.png"></image><text class="block">7.2J81</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark2.png"></image><text class="block">7.2D41</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark2.png"></image><text class="block">7.2D41</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark3.png"></image><text class="block">7.2B61</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark3.png"></image><text class="block">7.2B61</text></view>
 
-      <view><image mode="center" src="../../static/images/trademark4.png"></image><text class="block">82E63</text></view>
+      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark4.png"></image><text class="block">82E63</text></view>
     </scroll-view>
   </view>
 

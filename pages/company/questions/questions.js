@@ -139,7 +139,6 @@ Page({
         if (response.data.code === '000000') {
           response.data.dataList.forEach(item => {
             Object.assign(item,{isPlay: [false,false]});
-            item.createTime = app.formatDate(item.createTime);
           })
           response.data.dataList = that.data.quesionList.dataList.concat(response.data.dataList)
           that.setData({quesionList: response.data})
@@ -163,8 +162,6 @@ Page({
         if (response.data.code === '000000') {
           response.data.dataList.forEach(item => {
             Object.assign(item,{isPlay: [false,false]});
-            item.replyTime = app.formatDate(item.replyTime);
-            item.createTime = app.formatDate(item.createTime)
           })
           response.data.dataList = that.data.answerList.dataList.concat(response.data.dataList)
           that.setData({ answerList: response.data })

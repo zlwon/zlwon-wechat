@@ -28,7 +28,7 @@ l-->
   <view class="introduce">
     <view class="i-title"><text class="bg-white">个人介绍</text></view>
 
-    <view class="i-txt">{{list.myinfo}}</view>
+    <view class="i-txt">{{list.myinfo || '无'}}</view>
   </view>
 
   <!-- 电话 -->

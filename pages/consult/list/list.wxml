@@ -40,7 +40,7 @@ l-->
    <!-- 提交 -->
   <view class="send clearfix">
      <view class="s-input">
-      <input wx:if="{{!voice}}" bindblur="bindBlur"></input>
+      <input wx:if="{{!voice}}" bindinput="bindBlur" bindconfirm="submitConsultation" confirm-type="send"></input>
        <icon class="iconfont {{voice ? 'icon-jianpan1 font' : 'icon-yuyin'}}" bindtap="switchRecorder"></icon> 
       <label wx:if="{{voice}}" bindtouchstart="setRecorder" bindtouchend="stopRecorde">按住说话 松手完场录音</label>
     </view> 

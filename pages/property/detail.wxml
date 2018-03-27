@@ -18,19 +18,19 @@ l-->
       <label wx:for="{{label}}" wx:key="{{index}}">{{item.labelName}}<i class="green iconfont icon-ai45"></i><i class="green">{{item.hot}}</i></label>
     </view>
 
-    <view class="c-more" bindtap="isShowLabel">{{isHidden ? '更多' : '收起'}}<i class="iconfont {{isHidden ? 'icon-tubiao-' : 'icon-shangjiantou'}}"></i></view>
+    <view wx:if="{{label.length !== 0}}" class="c-more" bindtap="isShowLabel">{{isHidden ? '更多' : '收起'}}<i class="iconfont {{isHidden ? 'icon-tubiao-' : 'icon-shangjiantou'}}"></i></view>
    </view>
 
    <view class="parameter">
-      <view class="p-list"><text>生产商 : </text> {{list.manufacturer}}</view>
+      <view class="p-list"><text>生产商 : </text> {{list.manufacturer || ''}}</view>
 
-      <view class="p-list"><text>商标 : </text> {{list.brandName}}</view>
+      <view class="p-list"><text>商标 : </text> {{list.brandName || ''}}</view>
 
-      <view class="p-list"><text>填充物 : </text> {{list.filler}}</view>
+      <view class="p-list"><text>填充物 : </text> {{list.filler || ''}}</view>
 
-      <view class="p-list"><text>阻燃等级 : </text> {{list.flameRate}}</view>
+      <view class="p-list"><text>阻燃等级 : </text> {{list.flameRate || ''}}</view>
 
-      <view class="p-list"><text>安规认证 : </text> {{list.safetyCert}}</view>
+      <view class="p-list"><text>安规认证 : </text> {{list.safetyCert || ''}}</view>
    </view>
 
    <!-- 详情 -->

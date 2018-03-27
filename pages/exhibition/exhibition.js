@@ -134,7 +134,18 @@ Page({
   meunTap: function () {
     app.isLogin({
       success: function (entryKey) {
-        wx.redirectTo({ url: '../company/questions/questions' })
+        //获取用户类型
+        wx.request({
+          method: 'GET',
+          url: '' + app.basicUrl + '/customer/judgeUserRoleByEntryKey?entryKey=' + entryKey + '',
+          success: function (response) {
+            if (response.data.code === '000000') {
+              if (response.data.dat === '1') {
+                wx.redirectTo({ url: '/pages/company/questions/questions' })
+              }
+            }
+          }
+        })
       }
     })
   },
@@ -197,6 +208,6 @@ Page({
   },
 
   tapLeavel: function (e) {
-    parseInt(this.data.pageX) - parseInt(e.changedTouches[0].pageX) >= 18 ? this.setData({ popup: false}) : '';
+    parseInt(this.data.pageX) - parseInt(e.changedTouches[0].pageX) >= 48 ? this.setData({ popup: false}) : '';
   }
 })

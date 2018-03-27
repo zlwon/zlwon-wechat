@@ -89,7 +89,6 @@
 
 .list .txt image {
   width: 100px;
-  height: 100px;
   margin-bottom: 6px;
 }
 
@@ -103,7 +102,7 @@
 .list .tools i {
   display: inline-block;
   margin-right: 6px;
-  font-size: 20px;
+  font-size: 25px;
   vertical-align: top;
 }
 
