@@ -1,26 +1,27 @@
 {
   "pages": [
-    "pages/index/index",        
-    "pages/exhibition/exhibition",        
+    "pages/index/index",
+    "pages/exhibition/exhibition",
     "pages/apply/detail",
     "pages/logs/logs",
     "pages/property/detail",
     "pages/company/questions/questions",
     "pages/company/answer/answer",
-    "pages/company/user/login/login",
-    "pages/company/engineer/login/login",
+    "pages/company/login/login",
     "pages/company/user/scan/scan",
     "pages/company/user/register/register",
     "pages/company/engineer/introduce/introduce",
     "pages/consult/detail/detail",
     "pages/consult/list/list",
-    "pages/activity/list/list",        
-    "pages/activity/vote/vote"
+    "pages/activity/list/list",
+    "pages/activity/vote/vote",
+    "pages/company/user/info/info",
+    "pages/error/error"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "知料",
+    "navigationBarTitleText": "塑胶展小助手",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#eee"
   }

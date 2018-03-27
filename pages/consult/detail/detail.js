@@ -37,9 +37,6 @@ Page({
         success: function (response) {
           if (response.data.code === '000000') {
             that.setData({list: response.data.data});
-          } else if (response.data.code === '000008') {
-            wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-            setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
           }
         }
       })
@@ -97,14 +94,14 @@ Page({
 
   //公共头部组件右侧按钮点击事件 跳转至首页
   hearTap: function () {
-    wx.navigateTo({ url: '../../index/index' })
+    wx.reLaunch({ url: '../../index/index' })
   },
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
     app.isLogin({
       success: function () {
-        wx.navigateTo({ url: '../../company/questions/questions' })
+        wx.redirectTo({ url: '../../company/questions/questions' })
       }
     });
   },

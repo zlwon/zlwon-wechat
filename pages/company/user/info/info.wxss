@@ -1,0 +1,12 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 08
+@Introduce: 补充用户信息样式表
+*/
+
+@import "../../login/login.wxss";
+
+.prompt {
+  color: red;
+  margin-bottom: 8px;
+}

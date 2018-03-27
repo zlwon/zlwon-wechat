@@ -37,11 +37,11 @@ l-->
 
       <view class="p-list"><text>材料规格 : </text> <navigator class="green" url="../property/detail?id={{list.sid}}" hover-class="none">{{list.specName}}</navigator></view>
 
-      <view class="p-list"><text>基材 : </text> {{list.baseMaterial}}</view>
+      <view class="p-list"><text>基材 : </text> {{list.baseMaterial || ''}}</view>
 
-      <view class="p-list"><text>材料厂商 : </text> {{list.manufacturer}}</view>
+      <view class="p-list"><text>材料厂商 : </text> {{list.manufacturer || ''}}</view>
 
-      <view class="p-list"><text>终端客户 : </text> {{list.terminal}}</view>
+      <view class="p-list"><text>终端客户 : </text> {{list.terminal || ''}}</view>
    </view>
 
    <!-- 详情 -->
@@ -64,9 +64,9 @@ l-->
    <view class="tools clearfix">
     <view class="t-list" bindtap="collection" hover-class="hover"><i class="iconfont {{collect ? 'orange icon-shoucang1 ver-t' : 'icon-shoucang font ver-m'}}"></i>{{collect ? '取消收藏' : '收藏'}}</view>
 
-    <view class="t-list bg-orange" hover-class="hover"><navigator url="../company/engineer/introduce/introduce?id={{exhibitionCaseId}}"><i class="iconfont icon-user"></i>现场工程师</navigator></view>
+     <view class="t-list bg-orange" hover-class="hover"><navigator url="../company/engineer/introduce/introduce?id={{exhibitionCaseId}}"><i class="iconfont icon-user"></i>现场工程师</navigator></view> 
 
-    <view class="t-list bg-drakgreen" hover-class="hover"><navigator url="../consult/list/list?id={{list.id}}&cid={{exhibitionCaseId}}"><i class="iconfont icon-zixun1"></i>在线咨询</navigator></view>
+     <view class="t-list bg-drakgreen" hover-class="hover"><navigator url="../consult/list/list?id={{list.id}}&cid={{exhibitionCaseId}}"><i class="iconfont icon-zixun1"></i>在线咨询</navigator></view> 
    </view>
 </view>
 

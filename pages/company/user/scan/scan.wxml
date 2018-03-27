@@ -6,7 +6,7 @@ l-->
 
 <view class="container" wx:if="{{!state}}">
   <!-- 切换普通用户登录 -->
-  <view class="tabs"><navigator url="../../engineer/login/login" hover-class="none"><icon class="iconfont icon-user"></icon>我是工程师</navigator></view>
+  <view class="tabs"><navigator class="inline" url="../../login/login" hover-class="none"><icon class="iconfont icon-user"></icon>展商登录</navigator></view>
 
   <view class="table">
     <!-- logo -->
@@ -21,10 +21,10 @@ l-->
       <i class="block gray">或</i>
 
       <navigator class="inline" url="../register/register" hover-class="green">通过手机注册</navigator>
+<!-- 
+       <i class="gray margin">/</i>
 
-      <i class="gray margin">/</i>
-
-      <navigator class="inline" url="../login/login" hover-class="green">已有账号</navigator>
+      <navigator class="inline" url="../../login/login" hover-class="green">已有账号</navigator>  -->
     </view>
   </view>
 </view>

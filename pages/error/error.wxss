@@ -1,0 +1,7 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 404页面样式表
+*/
+
+@import "../company/login/login.wxss";

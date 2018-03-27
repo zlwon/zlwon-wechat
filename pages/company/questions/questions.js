@@ -118,7 +118,7 @@ Page({
 
   //公共头部组件右侧按钮点击事件 跳转至首页
   hearTap: function () {
-    wx.navigateTo({ url: '../../index/index' })
+    wx.reLaunch({ url: '../../index/index' })
   },
 
   // 点击切换tabs
@@ -145,7 +145,7 @@ Page({
           that.setData({quesionList: response.data})
         } else if (response.data.code === '000008') {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
+          setTimeout(() => { wx.reLaunch({ url: '/pages/company/user/scan/scan' }) }, 1500)
         }
       }
     })
@@ -170,7 +170,7 @@ Page({
           that.setData({ answerList: response.data })
         } else if (response.data.code === '000008') {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
+          setTimeout(() => { wx.reLaunch({ url: '/pages/company/user/scan/scan' }) }, 1500)
         }
       }
     })

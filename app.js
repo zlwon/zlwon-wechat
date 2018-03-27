@@ -18,9 +18,9 @@ App({
         //是否显示提示语句
         if (elem.prompt) {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login'}) }, 1500)
+          setTimeout(() => { wx.reLaunch({ url: '/pages/company/user/scan/scan'}) }, 1500)
         } else {
-          wx.redirectTo({ url: '/pages/company/engineer/login/login'})
+          wx.reLaunch({ url: '/pages/company/user/scan/scan'})
         }
       }
     })
@@ -75,5 +75,10 @@ App({
       url: '' + that.basicUrl+'/programAccess/addProgramAccessRecord',
       data: { route: that.getPageUrl(obj, parms), remark: remark, entryKey: entryKey}
     })
+  },
+
+  //通过屏幕的宽度自适应图片高度
+  adaptableHeight () {
+    return wx.getSystemInfoSync().windowWidth * 0.625 + 'px';
   }
 })

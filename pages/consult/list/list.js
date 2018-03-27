@@ -110,7 +110,7 @@ Page({
         },
         fail: function () {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
+          setTimeout(() => { wx.reLaunch({ url: '/pages/company/user/scan/scan'})}, 1500)
         }
       })
     }else {
@@ -132,13 +132,13 @@ Page({
 
   //公共头部组件右侧按钮点击事件 跳转至首页
   hearTap: function () {
-    wx.navigateTo({ url: '../../index/index' })
+    wx.reLaunch({ url: '../../index/index' })
   },
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
     app.isLogin({success: function () {
-      wx.navigateTo({url: '/pages/company/questions/questions'})
+      wx.redirectTo({url: '/pages/company/questions/questions'})
     }});
   },
   
@@ -156,7 +156,7 @@ Page({
           that.setData({ list: response.data })
         } else if (response.data.code === '000008') {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
+          setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan'})}, 1500)
         }
       }
     })
@@ -257,7 +257,7 @@ Page({
 
   //发送用户咨询
   submitConsultation: function () {
-    if (this.data.consult !== '') {
+    if (this.data.consult !== '' && !this.data.voice) {
       const that = this;
       wx.getStorage({
         key: 'entryKey',
@@ -282,7 +282,7 @@ Page({
         },
         fail: function () {
           wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
+          setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan'})}, 1500)
         }
       })
     }

@@ -9,7 +9,7 @@ l-->
     <!-- 返回首页 -->
     <i class="fl iconfont {{heardClass}}" bindtap="hearTap"></i>
 
-    <image class='logo' src='/static/images/logo.jpg'></image>
+    <image class='logo' src='/static/images/logo1.png'></image>
 
     <i class="fr iconfont {{meunClass}}" bindtap="meunTap"></i>
   </view>

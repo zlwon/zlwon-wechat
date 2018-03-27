@@ -20,7 +20,8 @@ Page({
     email: '',
     edit: [false,false],
     entryKey: '',
-    remark: ''
+    remark: '',
+    imageUrl: ''
   },
 
   /**
@@ -132,11 +133,16 @@ Page({
                 method: 'POST',
                 header: { 'content-type': 'application/x-www-form-urlencoded' },
                 url: '' + app.basicUrl + '/scanCard/scanBaiduCloudOcr',
-                data: { url: JSON.parse(result.data).data, languageType: 'CHN_ENG', detectDirection: false, detectLanguage: false, probability: false, accessToken: that.data.token },
+                data: { url: JSON.parse(result.data).data.mappingUrl, languageType: 'CHN_ENG', detectDirection: false, detectLanguage: false, probability: false, accessToken: that.data.token },
                 success: function (response) {
+                  console.log(JSON.stringify(response.data));
                   wx.hideLoading();
                   if (response.data.code === '000000') {
-                    that.setData({ state: true, phone: response.data.data.mobile, email: response.data.data.mail, remark: response.data.data.remark})
+                    if (response.data.data.mobile === null && response.data.data.mail === null) {
+                      wx.showToast({ title: '扫描失败,请将名片靠近手机重试一下', icon: 'none' })
+                    }else {
+                      that.setData({ state: true, phone: response.data.data.mobile, email: response.data.data.mail, remark: response.data.data.remark, imageUrl: JSON.parse(result.data).data.mappingUrl })
+                    }
                   }else {
                     wx.showToast({title: response.data.message, icon: 'none'})
                   }
@@ -182,28 +188,43 @@ Page({
     this.setData({ edit: data })
   },
 
+  //判断输入的信息是否正确
+  isValidator: function () {
+    let falge = false;
+    if (regex.regPhone(this.data.phone)) {
+      wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入正确的手机号', icon: 'none', duration: 1500 }) } })
+    } else if (regex.regEmail(this.data.email)) {
+      wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入正确邮箱', icon: 'none', duration: 1500 }) } })
+    }else {
+      falge = true;
+    }
+    return falge;
+  },
+
   //点击确认注册
   confirmRegister: function () {
     const that = this;
-    wx.showLoading({ title: '注册中, 请稍待...', mask: true })
-    wx.request({
-      method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      url: '' + app.basicUrl + '/manage/registerScanCustomer',
-      data: { mobile: that.data.phone, mail: that.data.email, remark: that.data.remark, entryKey: that.data.entryKey },
-      success: function (response) {
-        wx.hideLoading();
-        if (response.data.code === '000000') {
-          wx.showToast({ title: '注册成功', icon: 'none' });
-          wx.setStorage({ key: "entryKey", data: that.data.entryKey })
-          setTimeout(() => { wx.redirectTo({ url: '/pages/index/index' }) }, 1500)
-        } else {
-          wx.showToast({ title: response.data.message, icon: 'none' })
+    if (that.isValidator()) {
+      wx.showLoading({ title: '注册中, 请稍待...', mask: true })
+      wx.request({
+        method: 'POST',
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        url: '' + app.basicUrl + '/manage/registerScanCustomer',
+        data: { mobile: that.data.phone, mail: that.data.email, remark: that.data.remark, cardUrl: that.data.imageUrl, entryKey: that.data.entryKey },
+        success: function (response) {
+          wx.hideLoading();
+          if (response.data.code === '000000') {
+            wx.showToast({ title: '注册成功', icon: 'none' });
+            wx.setStorage({ key: "entryKey", data: that.data.entryKey })
+            setTimeout(() => { wx.redirectTo({ url: '/pages/index/index' }) }, 1500)
+          } else {
+            wx.showToast({ title: response.data.message, icon: 'none' })
+          }
+        },
+        fail: function () {
+          wx.showToast({ title: '注册失败', icon: 'none' })
         }
-      },
-      fail: function () {
-        wx.showToast({ title: '注册失败', icon: 'none' })
-      }
-    })
+      })
+    }
   }
 })

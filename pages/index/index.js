@@ -17,13 +17,44 @@ Page({
       heardClass: '',
       meunClass: '',
     },
+    imageHeight: app.adaptableHeight(),
+    imageWidth: [],
+    type: '' //账号类型 1则为工程师，否则0为非工程师
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    let that = this;
+    wx.getStorage({
+      key: 'entryKey',
+      success: function(res) {
+        //判断用户是否完善账户信息,若没有完善则去完善
+        wx.request({
+          method: 'GET',
+          url: '' + app.basicUrl + '/customer/queryUserInfoByEntryKey?entryKey=' + res.data+'',
+          success: function (response) {
+            if (response.data.code === '000000') {
+              if (response.data.data.mobile === '' || response.data.data.mobile === null || response.data.data.email === '' || response.data.data.email === null) {
+                wx.redirectTo({url: '../company/user/info/info'})
+              }
+            }
+          }
+        })
+
+        //获取用户类型
+        wx.request({
+          method: 'GET',
+          url: '' + app.basicUrl + '/customer/judgeUserRoleByEntryKey?entryKey=' + res.data + '',
+          success: function (response) {
+            if (response.data.code === '000000') { 
+              that.setData({ type: response.data.data})
+            }
+          }
+        })
+      },
+    })
   },
 
   /**
@@ -82,5 +113,12 @@ Page({
         wx.navigateTo({ url: '..company/questions/questions' })
       }
     })
+  },
+
+  //通过图片的尺寸自适应图片宽度
+  adaptableWidth(e) {
+    let data = this.data.imageWidth, count = e.target.dataset.count, ratio = e.detail.width / e.detail.height; 
+    data[parseInt(count)] = ratio * 100;
+    this.setData({ imageWidth: data}) 
   }
 })

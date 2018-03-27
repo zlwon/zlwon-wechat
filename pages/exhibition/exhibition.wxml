@@ -16,7 +16,7 @@ l-->
     <view class="s-input">
       <label class="gray iconfont icon-fangdajing" bindtap="fuzzySearch"></label>
 
-      <input bindblur="getCaseName" bindconfirm="getCaseName" confirm-type="search"></input>
+      <input bindinput="getCaseName" name="caseName" bindconfirm="fuzzySearch" confirm-type="search"></input>
     </view>
 
     <view class="fifter"><icon class="iconfont icon-shaixuantiaojian" bindtap="showPopup"></icon></view>

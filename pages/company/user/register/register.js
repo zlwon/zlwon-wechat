@@ -126,9 +126,7 @@ Page({
         success: function (response) {
           if (response.data.code === '000000') {
             wx.showToast({ title: '验证码发送成功', icon: 'none' })
-          } else {
-            wx.showToast({ title: '获取验证码失败,请稍后重试', icon: 'none' })
-          }
+          } 
         },
         fail: function () {
           wx.showToast({title: '获取验证码失败,请稍后重试', icon: 'none'})
@@ -146,8 +144,6 @@ Page({
       wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入正确的手机号', icon: 'none', duration: 1500 }) } })
     }else if (this.data.code.length < 4) {
       wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入4位验证码', icon: 'none', duration: 1500 }) } })
-    }else if (this.data.email !== '' && regex.regEmail(this.data.email)) {
-      wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入正确的邮箱', icon: 'none', duration: 1500 }) } })
     }else {
       falge = true;
     }
@@ -168,7 +164,7 @@ Page({
           if (response.data.code === '000000') {
             wx.setStorage({ key: "entryKey", data: that.data.entryKey })
             wx.showToast({ title: '恭喜你,注册成功', icon: 'none' })
-            setTimeout(() => { wx.redirectTo({ url: '/pages/index/index', }) }, 1500)
+            setTimeout(() => { wx.reLaunch({ url: '/pages/index/index', }) }, 1500)
           } else {
             wx.showToast({ title: response.data.message, icon: 'none' })
           }

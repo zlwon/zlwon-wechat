@@ -47,8 +47,6 @@ Page({
           success: function (response) {
             if (response.data.code === '000000') {
               that.setData({ producers: response.data.data})
-            } else if(response.data.code === '000008') {
-              wx.redirectTo({ url: '/pages/company/engineer/login/login' })
             }
           }
         })
@@ -109,7 +107,7 @@ Page({
                 response.data.dataList = that.data.list.dataList.concat(response.data.dataList)
                 that.setData({ list: response.data })
               } else if (response.data.code === '000008') {
-                wx.redirectTo({ url: '/pages/company/engineer/login/login' })
+                wx.reLaunch({ url: '/pages/company/user/scan/scan'})
               }
             }
           })
@@ -129,14 +127,14 @@ Page({
 
   //公共头部组件右侧按钮点击事件
   hearTap: function () {
-    wx.navigateTo({ url: '../index/index' })
+    wx.reLaunch({ url: '../index/index' })
   }, 
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
     app.isLogin({
       success: function (entryKey) {
-        wx.navigateTo({ url: '../company/questions/questions' })
+        wx.redirectTo({ url: '../company/questions/questions' })
       }
     })
   },
@@ -155,8 +153,6 @@ Page({
           success: function (response) {
             if (response.data.code === '000000') {
               that.setData({list: response.data})
-            } else if (response.data.code === '000008') {
-              wx.redirectTo({ url: '/pages/company/engineer/login/login' })
             }
           }
         })
@@ -192,9 +188,7 @@ Page({
 
   //模糊搜素
   fuzzySearch: function () {
-    if (this.data.caseName !== '') {
-      this.getCaseList('1');
-    }
+    this.getCaseList('1');
   },
 
   //手指滑动关闭弹窗

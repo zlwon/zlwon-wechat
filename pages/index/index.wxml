@@ -4,21 +4,16 @@
 @Introduce:  首页
 l-->
 
- <import src="../../component/header.wxml"/> 
-
- <view class="box">
-  <!-- 公共头部 -->
-  <template is="header" data="{{...header}}"/> 
-
+ <view class="{{type !== '0' ? 'container' : ''}}">
   <!-- 横幅 -->
-  <view class="banner"><image mode="cneter" src="../../static/images/banner.jpg"></image></view>
+  <view class="banner"><image mode="widthFix" src="../../static/images/banner.jpg"></image></view>
 
   <!-- 轮播 -->
   <view class="carousel">
-      <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
+      <swiper style="height:{{imageHeight}}" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
          <block>
           <swiper-item>
-            <navigator url="../exhibition/exhibition" hover-class="none"><image src="../../static/images/banner1.jpg" class="slide-image"/></navigator>
+            <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="../../static/images/banner1.jpg" class="slide-image"/></navigator>
           </swiper-item>
         </block>
      </swiper>
@@ -45,26 +40,26 @@ l-->
   <!-- 活动 -->
   <view class="activity">
     <view class="a-list">
-      <navigator class="clearfix" url="../exhibition/exhibition" hover-class="none">
-        <view class="red">最美展女郎</view>
+      <navigator class="clearfix" url="../error/error" hover-class="none">
+        <view class="">最美展女郎</view>
 
         <view class="gray">人美,声甜,气质佳...</view>
 
-        <view><text class="red weight">606人</text>访问过 > </view>
+        <view><text class="green weight">606人</text>访问过 > </view>
 
-        <image class="first" mode="right" src="../../static/images/beauty.png"></image>
+        <image class="first" src="../../static/images/beauty.png" style="width: {{imageWidth[0]}}px" data-count="0" bindload="adaptableWidth"></image>
       </navigator>
     </view>
     
     <view class="a-list">
-      <navigator class="clearfix" hover-class="none" url="../activity/list/list?aid=2">
-        <view class="red">最炫展品</view>
+      <navigator class="clearfix" hover-class="none" url="../error/error">
+        <view class="">最炫展品</view>
 
         <view class="gray">够酷,够炫,够装逼...</view>
 
-        <view><text class="red weight">606人</text>在参加 > </view>
+        <view><text class="green weight">606人</text>在参加 > </view>
 
-        <image class="second" mode="center" src="../../static/images/exhibits.png"></image>
+        <image class="second" src="../../static/images/exhibits.png" style="width: {{imageWidth[1]}}px" data-count="1" bindload="adaptableWidth"></image>
       </navigator>
     </view>
   </view>
@@ -93,5 +88,7 @@ l-->
   </view>
 
   <!-- 扫码 -->
-  <navigator hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-qr-code"></i>扫名片快速注册</navigator>
+  <navigator wx:if="{{type === ''}}" hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-qr-code"></i>扫名片快速注册</navigator>
+
+  <navigator wx:if="{{type === '1'}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
  </view>

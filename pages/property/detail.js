@@ -105,13 +105,13 @@ Page({
   
   //公共头部组件右侧按钮点击事件 跳转至首页
   hearTap: function () {
-    wx.navigateTo({ url: '../index/index' })
+    wx.reLaunch({ url: '../index/index' })
   },
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
     app.isLogin({success: function () {
-      wx.navigateTo({url: '../company/questions/questions'})
+      wx.redirectTo({url: '../company/questions/questions'})
     }})
   },
 

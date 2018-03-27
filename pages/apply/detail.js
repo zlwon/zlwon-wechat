@@ -111,13 +111,13 @@ Page({
 
   //公共头部组件左侧按钮点击事件 跳转至首页
   hearTap: function () {
-    wx.navigateTo({ url: '../index/index'})
+    wx.reLaunch({ url: '../index/index'})
    },
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
     app.isLogin({success: function (entryKey) {
-      wx.navigateTo({ url: '../company/questions/questions'})
+      wx.redirectTo({ url: '../company/questions/questions'})
     }})
   },
 
@@ -143,9 +143,6 @@ Page({
             //已收藏
             wx.showToast({ title: '收藏成功', icon: 'none', mask: true })
             that.setData({ collect: true, collectId: response.data.data.id })
-          }else if (response.data.code === '000008') {
-            wx.showToast({title: '你已下线,请重新登录', icon: 'none'});
-            setTimeout(() => {wx.redirectTo({url: '../company/engineer/login/login'})}, 1500)
           } else {
             wx.showToast({ title: response.data.message, icon: 'none', mask: true })
           }
@@ -172,9 +169,6 @@ Page({
             if (response.data.code === '000000') {
               wx.showToast({ title: '已取消收藏', icon: 'none', mask: true })
               that.setData({ collect: false })
-            } else if (response.data.code === '000008') {
-              wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-              setTimeout(() => { wx.redirectTo({ url: '../company/engineer/login/login' }) }, 1500)
             } else {
               wx.showToast({ title: response.data.message, icon: 'none', mask: true })
             }
@@ -202,7 +196,7 @@ Page({
 
   tapLeavel: function (e) {
     let count = this.data.count, startX = parseInt(this.data.pageX), lastX = parseInt(e.changedTouches[0].pageX);
-    startX - lastX >= 18 ? count++ : -(startX - lastX) >= 18 ? count -- : '';
+    startX - lastX >= 28 ? count++ : -(startX - lastX) >= 28 ? count -- : '';
     count > 2 ? this.setData({ count: 0 }) : count < 0 ? this.setData({ count: 2 }) : this.setData({count: count});
   }
 })

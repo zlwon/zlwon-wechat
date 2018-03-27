@@ -4,7 +4,7 @@
 @Introduce: 普通用户手机注册样式表
 */
 
-@import "../../engineer/login/login.wxss";
+@import "../../login/login.wxss";
 
 .code {
   display: flex;

@@ -6,7 +6,7 @@ l-->
 
 <view class="container">
   <!-- 切换工程师登录 -->
-   <view class="tabs"><navigator url="../../engineer/login/login" hover-class="none"><icon class="iconfont icon-user"></icon>我是普通用户</navigator></view> 
+   <view class="tabs"><navigator url="../../login/login" hover-class="none"><icon class="iconfont icon-user"></icon>展商登录</navigator></view> 
 
   <view class="table">
     <!-- logo -->
@@ -25,8 +25,6 @@ l-->
 
          <view hidden="{{countDown === 61}}" class="c-list"><label>{{countDown}} 秒后重新获取</label></view> 
       </view>
-
-      <view class="relative"><i class="iconfont icon-tubiao209"></i><input placeholder="常用邮箱(非必填)" placeholder-class="placeholder" bindblur="setEmailDate"></input></view>
 
       <view><button bindtap="confirmRegister">注册</button></view>
     </view>

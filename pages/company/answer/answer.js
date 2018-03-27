@@ -45,9 +45,6 @@ Page({
             response.data.data.createTime = app.formatDate(response.data.data.createTime)
             response.data.data.replyTime = app.formatDate(response.data.data.replyTime)
             that.setData({list: response.data.data})
-          }else if (response.data.code === '000008') {
-            wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-            setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
           }
         }
       })
@@ -105,7 +102,7 @@ Page({
 
   //公共头部组件右侧按钮点击事件 跳转至首页
   hearTap: function () {
-    wx.navigateTo({ url: '../../index/index'})
+    wx.reLaunch({ url: '../../index/index'})
   },
 
   //获取用户输入的咨询
@@ -141,7 +138,6 @@ Page({
     //录音结束的触发方法
     recorderManager.onStop((res) => {
       let tempFilePaths = res.tempFilePath;
-      console.log(tempFilePaths);
       app.isLogin({success: function (entryKey) {
         wx.showLoading({ title: '语音发送中...' })
         wx.uploadFile({
@@ -158,7 +154,7 @@ Page({
                 wx.hideLoading()
                 if (response.data.code === '000000') {
                   wx.showToast({ title: '提交成功', icon: 'none' });
-                  setTimeout(() => { wx.navigateTo({ url: '/pages/company/questions/questions' }) }, 1500)
+                  setTimeout(() => { wx.redirectTo({ url: '/pages/company/questions/questions' }) }, 1500)
                 } else {
                   wx.showToast({ title: response.data.message, icon: 'none' });
                 }
@@ -192,10 +188,10 @@ Page({
           success: function (response) {
             if (response.data.code === '000000') {
               wx.showToast({ title: '提交成功', icon: 'none' });
-              setTimeout(() => { wx.navigateTo({ url: '/pages/company/questions/questions' }) }, 1500)
+              setTimeout(() => { wx.redirectTo({ url: '/pages/company/questions/questions' }) }, 1500)
             } else if (response.data.code === '000008') {
               wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-              setTimeout(() => { wx.redirectTo({ url: '/pages/company/engineer/login/login' }) }, 1500)
+              setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan' }) }, 1500)
             } else {
               wx.showToast({ title: response.data.message, icon: 'none' });
             }

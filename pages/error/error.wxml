@@ -1,0 +1,15 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-22
+@Introduce:  首页
+l-->
+
+<view class="container">
+  
+  <view class="table">
+    <!-- logo -->
+    <view class="logo-image"><image src="../../static/images/logo.png"></image></view>
+    
+    <view class="gray txtC">4月24号正式开启,敬请期待!</view>
+  </view>
+</view>
