@@ -33,9 +33,10 @@ Page({
         //判断用户是否完善账户信息,若没有完善则去完善
         wx.request({
           method: 'GET',
-          url: '' + app.basicUrl + '/customer/queryUserInfoByEntryKey?entryKey=' + res.data+'',
+          url: '' + app.basicUrl + '/customer/queryUserDetailInfoByEntryKey?entryKey=' + res.data+'',
           success: function (response) {
             if (response.data.code === '000000') {
+              that.setData({ type: response.data.data.role})
               if (response.data.data.email === '' || response.data.data.email === null) {
                 wx.getStorage({
                   key: 'count',
@@ -52,17 +53,6 @@ Page({
                   }
                 })
               }
-            }
-          }
-        })
-
-        //获取用户类型
-        wx.request({
-          method: 'GET',
-          url: '' + app.basicUrl + '/customer/judgeUserRoleByEntryKey?entryKey=' + res.data + '',
-          success: function (response) {
-            if (response.data.code === '000000') { 
-              that.setData({ type: response.data.data})
             }
           }
         })

@@ -137,10 +137,10 @@ Page({
         //获取用户类型
         wx.request({
           method: 'GET',
-          url: '' + app.basicUrl + '/customer/judgeUserRoleByEntryKey?entryKey=' + entryKey + '',
+          url: '' + app.basicUrl + '/customer/queryUserDetailInfoByEntryKey?entryKey=' + entryKey + '',
           success: function (response) {
             if (response.data.code === '000000') {
-              if (response.data.dat === '1') {
+              if (parseInt(response.data.data.role) !== 0) {
                 wx.redirectTo({ url: '/pages/company/questions/questions' })
               }
             }

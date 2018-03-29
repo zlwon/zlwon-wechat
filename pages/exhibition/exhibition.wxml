@@ -29,7 +29,7 @@ l-->
 
       <text class="p-txt">{{item.title}}</text>
 
-      <view class="p-txt gray">材料规格<text>Grivory GV-6H</text></view>
+      <view class="p-txt gray">材料规格<text>{{item.specName}}</text></view>
     </navigator>
   </view>
 

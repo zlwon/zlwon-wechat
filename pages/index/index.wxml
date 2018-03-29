@@ -10,10 +10,14 @@ l-->
 
   <!-- 轮播 -->
   <view class="carousel">
-      <swiper style="height:{{imageHeight}}" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
+      <swiper style="height:{{imageHeight}}" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{4000}}" duration="{{500}}" circular="{{true}}">
          <block>
           <swiper-item>
             <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="https://api.zlwon.com/upload/15221/banner1.jpg" class="slide-image"/></navigator>
+          </swiper-item>
+
+          <swiper-item>
+            <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="https://api.zlwon.com/upload/15221/banner2.jpg" class="slide-image"/></navigator>
           </swiper-item>
         </block>
      </swiper>
@@ -78,5 +82,5 @@ l-->
   <!-- 扫码 -->
   <navigator wx:if="{{type === ''}}" hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-qr-code"></i>扫名片快速注册</navigator>
 
-  <navigator wx:if="{{type === '1'}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
+  <navigator wx:if="{{type !== '0'}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
  </view>
