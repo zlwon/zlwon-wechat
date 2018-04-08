@@ -20,7 +20,8 @@ Page({
     count: 0, //tabs索引
     collect: false, //收藏状态
     collectId: '', //收藏id
-    pageX: 0
+    pageX: 0,
+    pageY: 0
   },
 
   /**
@@ -112,7 +113,7 @@ Page({
   //公共头部组件左侧按钮点击事件 跳转至首页
   hearTap: function () {
     wx.reLaunch({ url: '../index/index'})
-   },
+  },
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
   meunTap: function () {
@@ -125,6 +126,14 @@ Page({
           if (response.data.code === '000000') {
             if (parseInt(response.data.data.role) !== 0) {
               wx.redirectTo({ url: '/pages/company/questions/questions' })
+            }else {
+              wx.showModal({
+                title: 'www.zlwon.com',
+                content: '登录知料官网进入个人中心即可维护个人信息和查看收藏展品。',
+                showCancel: false,
+                confirmText: '关闭',
+                confirmColor: '#888'              
+              })
             }
           }
         }
@@ -152,7 +161,7 @@ Page({
         success: function (response) {
           if (response.data.code === '000000') {
             //已收藏
-            wx.showToast({ title: '收藏成功', icon: 'none', mask: true })
+            wx.showToast({ title: '收藏成功,请到官网个人中心查看', icon: 'none', mask: true })
             that.setData({ collect: true, collectId: response.data.data.id })
           } else {
             wx.showToast({ title: response.data.message, icon: 'none', mask: true })
@@ -206,8 +215,10 @@ Page({
   },
 
   tapLeavel: function (e) {
-    let count = this.data.count, startX = parseInt(this.data.pageX), lastX = parseInt(e.changedTouches[0].pageX);
-    startX - lastX >= 48 ? count++ : -(startX - lastX) >= 48 ? count -- : '';
-    count > 2 ? this.setData({ count: 0 }) : count < 0 ? this.setData({ count: 2 }) : this.setData({count: count});
+    let count = this.data.count, startX = parseInt(this.data.pageX), lastX = parseInt(e.changedTouches[0].pageX), startY = parseInt(this.data.pageY), lastY = parseInt(e.changedTouches[0].pageY);
+    if (startY - lastY < 12 || lastX - startY < 12) {
+      startX - lastX >= 48 ? count++ : -(startX - lastX) >= 48 ? count-- : '';
+      count > 2 ? this.setData({ count: 0 }) : count < 0 ? this.setData({ count: 2 }) : this.setData({ count: count });
+    }
   }
 })

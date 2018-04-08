@@ -13,9 +13,9 @@ l-->
 
     <!-- 登录信息 -->
     <view class="login block">
-      <view class="relative"><i class="iconfont icon-yonghu"></i><input placeholder="请完善个人邮箱" bindinput="setAccountDate" placeholder-class="placeholder" bindblur="setEmailDate"></input></view>
+      <view class="relative"><i class="iconfont icon-tubiao209"></i><input placeholder="请完善个人邮箱" bindinput="setAccountDate" placeholder-class="placeholder" bindblur="setEmailDate"></input></view>
 
-      <view class="relative"><i class="iconfont icon-tubiao209"></i><input bindinput="setPassDate" placeholder="请完善公司地址" bindblur="setCompanyDate" placeholder-class="placeholder"></input></view>
+      <view class="relative"><i class="iconfont icon-yonghu"></i><input bindinput="setPassDate" placeholder="请完善公司名称" bindblur="setCompanyDate" placeholder-class="placeholder"></input></view>
 
       <view><button bindtap="submitInfo">保存</button></view> 
     </view>

@@ -13,7 +13,7 @@ l-->
   <!-- 信息 -->
   <view class="engineer">
     <view class="portrait">
-      <image src="{{list.headerimg || '../../../../static/images/portrait.jpg'}}" mode="top"></image>  
+      <image src="{{list.headerimg || '../../../../static/images/portrait.jpg'}}" bindtap="previewImage"></image>  
 
       <i class="iconfont icon-huangguan grade{{list.role}}"></i>
     </view>

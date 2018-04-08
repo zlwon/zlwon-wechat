@@ -147,6 +147,14 @@ Page({
             if (response.data.code === '000000') {
               if (parseInt(response.data.data.role) !== 0) {
                 wx.redirectTo({ url: '/pages/company/questions/questions' })
+              } else {
+                wx.showModal({
+                  title: 'www.zlwon.com',
+                  content: '登录知料官网进入个人中心即可维护个人信息和查看收藏展品。',
+                  showCancel: false,
+                  confirmText: '关闭',
+                  confirmColor: '#888'
+                })
               }
             }
           }
@@ -284,6 +292,7 @@ Page({
               if (response.data.code === '000000') {
                 wx.showToast({ title: '咨询成功,等待回复', icon: 'none' });
                 that.getConsultList('1', res.data);
+                that.setData({ consult: ''})
               } else {
                 wx.showToast({ title: response.data.message, icon: 'none' });
               }

@@ -21,7 +21,9 @@ Page({
     edit: [false,false],
     entryKey: '',
     remark: '',
-    imageUrl: ''
+    imageUrl: '',
+    nickName: '',
+    avatarUrl: ''
   },
 
   /**
@@ -58,6 +60,13 @@ Page({
        if (response.data.code === '000000') {
          that.setData({ token: response.data.data})
        }
+     }
+   })
+
+   //获取微信头像/昵称
+   wx.getUserInfo({
+     success: function (res) {
+       that.setData({ nickName: res.userInfo.nickName, avatarUrl: res.userInfo.avatarUrl})
      }
    })
   },
@@ -117,7 +126,8 @@ Page({
     wx.chooseImage({
       count: 1, 
       sizeType: ['original', 'compressed'],
-      sourceType: ['camera'], 
+      sourceType: ['camera','album'], 
+      sizeType: ['compressed'],
       success: function (res) {
         wx.showLoading({ title: '上传中,请稍待...', mask: true })
         let tempFilePath = res.tempFilePaths[0]
@@ -211,7 +221,7 @@ Page({
         method: 'POST',
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         url: '' + app.basicUrl + '/manage/registerScanCustomer',
-        data: { mobile: that.data.phone, mail: that.data.email, remark: that.data.remark, cardUrl: that.data.imageUrl, entryKey: that.data.entryKey },
+        data: { mobile: that.data.phone, mail: that.data.email, remark: that.data.remark, cardUrl: that.data.imageUrl, entryKey: that.data.entryKey, nickName: that.data.nickName, headerimg: that.data.avatarUrl },
         success: function (response) {
           wx.hideLoading();
           if (response.data.code === '000000') {

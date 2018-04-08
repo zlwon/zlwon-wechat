@@ -40,7 +40,7 @@ l-->
 
   <!-- 提交 -->
   <view wx:if="{{(list.replyCont === '' || list.replyCont === null) && list.replyContVoice === null}}" class="send clearfix">
-    <view class="s-input"><input wx:if="{{!voice}}" bindinput="bindBlur" bindconfirm="submitAnswer" confirm-type="send"></input><icon class="iconfont {{voice ? 'icon-jianpan1 font' : 'icon-yuyin'}}" bindtap="switchRecorder"></icon><label wx:if="{{voice}}" bindtouchstart="setRecorder" bindtouchend="stopRecorde">按住说话 松手完场录音</label></view>
+    <view class="s-input"><input wx:if="{{!voice}}" value="{{answer}}" bindinput="bindBlur" bindconfirm="submitAnswer" confirm-type="send"></input><icon class="iconfont {{voice ? 'icon-jianpan1 font' : 'icon-yuyin'}}" bindtap="switchRecorder"></icon><label wx:if="{{voice}}" bindtouchstart="setRecorder" bindtouchend="stopRecorde">按住说话 松手完场录音</label></view>
 
     <view class="s-button" bindtap="submitAnswer"><i>提交</i></view>
   </view>

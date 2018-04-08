@@ -1,0 +1,61 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-24
+@Introduce:  活动详细页面
+l-->
+
+<view class="container">
+  <!-- 轮播图 -->
+   <view class="images">
+    <swiper style="height:{{imageHeight}}" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
+      <block>
+        <swiper-item>
+          <image style="height:{{imageHeight}}" src="https://api.zlwon.com/upload/15223/activity1-1522398785186.jpg" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+   </view> 
+
+   <!-- 内容 -->
+   <view class="content">
+    <text class="c-title">活动时间</text>
+   </view>
+
+   <view class="parameter activity">
+     <view class="p-list"><text>参与时间 : </text> {{list.startDate}} -- {{list.endDate}}</view>
+
+      <view class="p-list"><text>投票时间 : </text> {{list.startDate}} -- {{list.attendEndDate}}</view>
+   </view>
+
+   <!-- 详情 -->
+   <view class="detail" bindtouchstart="tapStart" bindtouchend="tapLeavel">
+    <!-- tabs -->
+    <view class="tabs clearfix">
+      <label><i class="{{count === 0 ? 'active' : ''}}" data-count="0" bindtap="switchTabs">活动规则</i></label>
+      <label><i class="{{count ===1 ? 'active' : ''}}" data-count="1" bindtap="switchTabs">赢取奖品</i></label>
+      <label><i class="{{count === 2 ? 'active' : ''}}" data-count="2" bindtap="switchTabs">领奖方式</i></label>
+    </view>
+
+    <view wx:if="{{count === 0}}" class="d-txt">1， 寻找最炫酷展品
+    ① 展品必须是在展会现场拍摄的展品的照片（仅限照片形式）
+    ② 每个用户每次上传一张，上传次数不限
+    ③ 所有用户可以看到上传的视频和照片，可以留言评论和点赞
+    ④ 获得赞数越多，展示的位置越向上
+
+    2， 评选最美展女郎
+    ① 展女郎必须是在展会现场拍摄的本人短视频（10s内）或者照片
+    ② 每个用户每次上传一张，上传次数不限
+    ③ 所有用户可以看到上传的视频和照片，可以留言评论和点赞
+    ④ 获得赞数越多，展示的位置越向上
+    ⑤ 此活动仅限女性用户发布视频或照片
+
+    声明：知料有权利在不通知发布者的情况下删除不合规定的作品或者评论内容。
+    本活动最终解释权归苏州知料信息科技有限公司所有</view>
+
+    <view wx:if="{{count === 1}}" class="d-txt">{{list.prizeProduct}}</view>
+
+    <view wx:if="{{count === 2}}" class="d-txt">{{list.prizeWay}}</view>
+   </view>
+</view>
+
+

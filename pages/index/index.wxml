@@ -4,7 +4,7 @@
 @Introduce:  首页
 l-->
 
- <view class="{{type !== '0' ? 'container' : ''}}">
+ <view class="{{type !== 0 ? 'container' : ''}}">
   <!-- 横幅 -->
    <view class="banner"><navigator hover-class="" url="../poster/poster"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/banner.jpg"></image></navigator></view>  
 
@@ -15,10 +15,6 @@ l-->
           <swiper-item>
             <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="https://api.zlwon.com/upload/15221/banner1.jpg" class="slide-image"/></navigator>
           </swiper-item>
-
-          <swiper-item>
-            <navigator style="height:{{imageHeight}}" url="../exhibition/exhibition?id=2" hover-class="none"><image src="https://api.zlwon.com/upload/15221/banner2.jpg" class="slide-image"/></navigator>
-          </swiper-item>
         </block>
      </swiper>
   </view>
@@ -28,28 +24,28 @@ l-->
     <view class="prize">
       <view class="title">参与活动赢奖品</view>
 
-      <image mode="widthFix" src="https://api.zlwon.com/upload/15221/activity.jpg"></image>
+      <navigator url="../activity/detail/detail?id=2" hover-class="none"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/activity.jpg"></image></navigator>
     </view>
 
     <view class="a-list">
-      <navigator class="clearfix" url="../error/error" hover-class="none">
+      <navigator class="clearfix" url="{{url}}?aid=1" hover-class="none">
         <view class="">评选最美展女郎</view>
 
         <view class="gray overflow-point">展商小姐姐晒美照喽，快来围观啦</view>
 
-        <view><text class="green weight">0人</text>访问过 > </view>
+        <view><text class="green weight">{{count[0]}}人</text>访问过 > </view>
 
         <image class="first" src="https://api.zlwon.com/upload/15221/beauty.png" style="width: {{imageWidth[0]}}px" data-count="0" bindload="adaptableWidth"></image>
       </navigator>
     </view>
     
     <view class="a-list">
-      <navigator class="clearfix" hover-class="none" url="../error/error">
+      <navigator class="clearfix" hover-class="none" url="{{url}}?aid=2">
         <view class="">寻找最炫酷展品</view>
 
         <view class="gray overflow-point">人人都能参与的"寻宝"活动拍名片按钮改成“拍名片快速注册”</view>
 
-        <view><text class="green weight">0人</text>在参加 > </view>
+        <view><text class="green weight">{{count[1]}}人</text>在参加 > </view>
 
         <image class="second" src="https://api.zlwon.com/upload/15221/exhibits.png" style="width: {{imageWidth[1]}}px" data-count="1" bindload="adaptableWidth"></image>
       </navigator>
@@ -80,7 +76,7 @@ l-->
   </view>
 
   <!-- 扫码 -->
-  <navigator wx:if="{{type === ''}}" hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-qr-code"></i>扫名片快速注册</navigator>
+  <navigator wx:if="{{type === ''}}" hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-paizhao"></i>拍名片快速注册</navigator>
 
-  <navigator wx:if="{{type !== '0'}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
+  <navigator wx:if="{{type !== 0 && type !== ''}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
  </view>

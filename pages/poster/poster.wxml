@@ -5,5 +5,5 @@
 l-->
 
 <view>
-  <image style="width: 100%" wx:for="{{20}}" wx:key="{{index}}" mode="widthFix" src="https://api.zlwon.com/upload/15221/{{index + 1}}.jpg"></image>
+  <image style="width: 100%" wx:for="{{14}}" wx:key="{{index}}" mode="widthFix" src="https://api.zlwon.com/upload/15221/{{index + 1}}.jpg"></image>
 </view>

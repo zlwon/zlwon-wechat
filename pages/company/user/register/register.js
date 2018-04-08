@@ -18,7 +18,9 @@ Page({
     code: '', //验证码
     email: '', //邮箱
     countDown: 61, //倒计时
-    entryKey: '' //秘钥
+    entryKey: '', //秘钥
+    nickName: '',
+    avatarUrl: ''
   },
 
   /**
@@ -43,6 +45,13 @@ Page({
         }
       }
     });
+
+    //获取微信头像/昵称
+    wx.getUserInfo({
+      success: function (res) {
+        that.setData({ nickName: res.userInfo.nickName, avatarUrl: res.userInfo.avatarUrl })
+      }
+    })
   },
 
   /**
@@ -143,7 +152,7 @@ Page({
     if (regex.regPhone(this.data.phone)) {
       wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入正确的手机号', icon: 'none', duration: 1500 }) } })
     }else if (this.data.code.length < 4) {
-      wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入4位验证码', icon: 'none', duration: 1500 }) } })
+      wx.vibrateLong({ success: function () { wx.showToast({ title: '请输入6位验证码', icon: 'none', duration: 1500 }) } })
     }else {
       falge = true;
     }
@@ -159,7 +168,7 @@ Page({
         method: 'POST',
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         url: '' + app.basicUrl + '/manage/registerInputCustomer',
-        data: { mobile: that.data.phone, mobileCode: that.data.code, mail: that.data.email, entryKey: that.data.entryKey },
+        data: { mobile: that.data.phone, mobileCode: that.data.code, mail: that.data.email, entryKey: that.data.entryKey, nickName: that.data.nickName, headerimg: that.data.avatarUrl },
         success: function (response) {
           if (response.data.code === '000000') {
             wx.setStorage({ key: "entryKey", data: that.data.entryKey })

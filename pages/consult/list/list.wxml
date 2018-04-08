@@ -23,11 +23,11 @@ l-->
     </view> -->
 
     <view class="list" wx:for="{{list.dataList}}" wx:key="{{index}}">
-      <view wx:if="{{item.contentVoice === null || item.contentVoice === ''}}" class="c-title">{{item.content}}</view>
+      <view wx:if="{{item.contentVoice === null || item.contentVoice === ''}}" class="c-title">我的提问: {{item.content}}</view>
 
-       <view wx:if="{{item.contentVoice !== null && item.contentVoice !== ''}}" class="video"><icon class="iconfont {{item.isPlay[0] ? 'icon-zanting' : 'icon-bofang'}}" data-count="0" data-id="{{index}}" data-voice="{{item.contentVoice}}" bindtap="operatingAudio"></icon><image src="{{item.isPlay[0] ? '../../../static/images/voice.gif' : '../../../static/images/voice.jpg'}}"></image></view> 
+       <view wx:if="{{item.contentVoice !== null && item.contentVoice !== ''}}" class="video">我的提问: <icon class="iconfont {{item.isPlay[0] ? 'icon-zanting' : 'icon-bofang'}}" data-count="0" data-id="{{index}}" data-voice="{{item.contentVoice}}" bindtap="operatingAudio"></icon><image src="{{item.isPlay[0] ? '../../../static/images/voice.gif' : '../../../static/images/voice.jpg'}}"></image></view> 
 
-       <view class="c-txt"><label>知料师 :</label><text wx:if="{{item.replyContVoice === null || item.replyContVoice === ''}}">{{item.replyCont || '暂无回答'}}</text><view wx:if="{{item.replyContVoice !== null && item.replyContVoice !== ''}}" class="video"><icon class="iconfont {{item.isPlay[1] ? 'icon-zanting' : 'icon-bofang'}}" data-id="{{index}}" data-voice="{{item.replyContVoice}}" data-count="1" bindtap="operatingAudio"></icon><image src="{{item.isPlay[1] ? '../../../static/images/voice.gif' : '../../../static/images/voice.jpg'}}"></image></view></view> 
+       <view class="c-txt"><label>工程师 :</label><text wx:if="{{item.replyContVoice === null || item.replyContVoice === ''}}">{{item.replyCont || '暂无回答'}}</text><view wx:if="{{item.replyContVoice !== null && item.replyContVoice !== ''}}" class="video"><icon class="iconfont {{item.isPlay[1] ? 'icon-zanting' : 'icon-bofang'}}" data-id="{{index}}" data-voice="{{item.replyContVoice}}" data-count="1" bindtap="operatingAudio"></icon><image src="{{item.isPlay[1] ? '../../../static/images/voice.gif' : '../../../static/images/voice.jpg'}}"></image></view></view> 
 
       <view class="gray txtR">{{item.replyTime || ''}}</view>
 
@@ -40,7 +40,7 @@ l-->
    <!-- 提交 -->
   <view class="send clearfix">
      <view class="s-input">
-      <input wx:if="{{!voice}}" bindinput="bindBlur" bindconfirm="submitConsultation" confirm-type="send"></input>
+      <input wx:if="{{!voice}}" bindinput="bindBlur" value="{{consult}}" bindconfirm="submitConsultation" confirm-type="send" placeholder="请咨询,支持文字和语音"></input>
        <icon class="iconfont {{voice ? 'icon-jianpan1 font' : 'icon-yuyin'}}" bindtap="switchRecorder"></icon> 
       <label wx:if="{{voice}}" bindtouchstart="setRecorder" bindtouchend="stopRecorde">按住说话 松手完场录音</label>
     </view> 

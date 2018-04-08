@@ -5,15 +5,28 @@
 l-->
 
 <view class="container">
-  <!-- 头部 -->
-  <!-- <view class="head">
-    <icon class="iconfont icon-arrowleft"></icon>
-  </view> -->
-
   <!-- 选择照片 -->
   <view class="bg-white">
-    <view class="vote"><textarea bindinput="inputContent" maxlength="50" placeholder="想说点啥..."></textarea></view>
+    <view class="vote"><textarea bindinput="inputContent" maxlength="50" placeholder="想说点啥...只有50个字哟,亲"></textarea></view>
     
-    <view class="camera"><icon hidden="{{image !== ''}}" class="ver-t iconfont weight icon-tianjiazhaopian" bindtap="chooseImage"></icon><image src="{{image}}" bindtap="previewImage"></image><label bindtap="addVote">发送</label></view>
+    <view class="camera">
+      <icon hidden="{{fileUrl !== ''}}" class="ver-t iconfont weight icon-tianjiazhaopian" bindtap="chooseList"></icon>
+      <image wx:if="{{fileType == 1}}" mode="widthFix" src="{{fileUrl}}" bindtap="previewImage"></image>
+      <video  wx:if="{{fileType === 2}}" src="{{fileUrl}}" objectFit="contain"></video>
+      <label class="{{content === '' ? 'disable' : 'available'}}" bindtap="addVote">发送</label>
+    </view>
+
+    <view class="prompt">建议上传4M一下的图片或12S的视频</view>
+  </view>
+
+
+  <!-- loading -->
+  <view class="loading" hidden="{{progress === 0 || progress === 100}}">
+    <view class="loading-t">
+      <view class="loading-l">
+        <image src="../../../static/images/loading.gif"></image>
+        <text class="block">已上传{{progress}}%,请稍待...</text>
+      </view>
+    </view>
   </view>
 </view>

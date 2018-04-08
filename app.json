@@ -17,13 +17,15 @@
     "pages/activity/vote/vote",
     "pages/company/user/info/info",
     "pages/error/error",
-    "pages/poster/poster"
+    "pages/poster/poster",
+    "pages/activity/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "橡塑展小助手",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#eee"
+    "backgroundColor": "#eee",
+    "enablePullDownRefresh": false
   }
 }

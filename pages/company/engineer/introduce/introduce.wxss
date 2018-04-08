@@ -29,6 +29,7 @@
   height: 100%;
   border-radius: 50%;
   background: white;
+  box-sizing: border-box;
 }
 
 .portrait i {

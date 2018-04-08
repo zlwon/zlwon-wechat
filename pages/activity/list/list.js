@@ -19,13 +19,19 @@ Page({
     aid: '', //活动id
     id: '', //项目id
     imageList: [],
+    play: false,
+    video: '',
+    videoContext: wx.createVideoContext('video'),
+    endDate: '',
     list: {
       "dataList": [],
       "totalPage": 0,
       "totalNumber": 0,
       "pageIndex": 1,
       "pageSize": 3
-    }
+    },
+    imageHeight: app.adaptableHeight(),
+    overtime: false
   },
 
   /**
@@ -44,7 +50,11 @@ Page({
           url: '' + app.basicUrl + '/voteActivity/queryVoteActivityById?id=' + that.data.aid+'&entryKey=' + entryKey+'',
           success: function (response) {
             if (response.data.code === '000000') {
-              // that.setData({ imageList: response.data.data.photo.split(',')})
+              that.setData({ imageList: response.data.data.photo.split(',')})
+              that.setData({ endDate: response.data.data.endDate})
+              if (new Date(that.data.endDate).getTime() - new Date().getTime() < 120000) {
+                setTimeout(() => { console.log(3); that.setData({ overtime: true }) }, new Date(that.data.endDate).getTime() - new Date().getTime())
+              }
             }
           }
         })
@@ -57,7 +67,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**
@@ -92,27 +102,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    const that = this;
-    if (parseInt(that.data.list.pageIndex) < parseInt(that.data.list.totalPage)) {
-      app.isLogin({
-        success: function (entryKey) {
-          wx.request({
-            method: 'POST',
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            url: '' + app.basicUrl + '/voteActivity/queryVoteProjectByPage',
-            data: { activityId: that.data.aid, currentPage: parseInt(that.data.list.pageIndex) + 1, pageSize: '3', entryKey: entryKey },
-            success: function (response) {
-              if (response.data.code === '000000') {
-                response.data.dataList.forEach(item => Object.assign(item, { isComment: false, isShow: false }))
-                response.data.dataList = that.data.list.dataList.concat(response.data.dataList);
-                that.setData({ list: response.data })
-              }
-            }
-          })
-        }, prompt: true})
-    }else {
-      wx.showToast({title: '没有更多数据了', icon: 'none'})
-    }
+   
   },
 
   /**
@@ -208,8 +198,8 @@ Page({
         success: function (response) {
           if (response.data.code === '000000') {
             wx.showToast({title: '评论成功', icon: 'none'});
-            that.setData({comment: false});
-            that.getActivityList(that);
+            that.setData({ comment: false, content: '', scrollTop: 0});
+            that.getActivityList(that, entryKey);
           }else {
             wx.showToast({ title: response.data.message, icon: 'none' })
           }
@@ -223,5 +213,40 @@ Page({
     let data = this.data.list, show = data.dataList[parseInt(e.target.dataset.count)].isShow;
     data.dataList[parseInt(e.target.dataset.count)].isShow = !show;
     this.setData({ list: data });
+  },
+
+  //滚动底部加载下一页
+  scrolltolower: function () {
+    const that = this;
+    if (parseInt(that.data.list.pageIndex) < parseInt(that.data.list.totalPage)) {
+      app.isLogin({
+        success: function (entryKey) {
+          wx.request({
+            method: 'POST',
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+            url: '' + app.basicUrl + '/voteActivity/queryVoteProjectByPage',
+            data: { activityId: that.data.aid, currentPage: parseInt(that.data.list.pageIndex) + 1, pageSize: '3', entryKey: entryKey },
+            success: function (response) {
+              if (response.data.code === '000000') {
+                response.data.dataList.forEach(item => Object.assign(item, { isComment: false, isShow: false }))
+                response.data.dataList = that.data.list.dataList.concat(response.data.dataList);
+                that.setData({ list: response.data })
+              }
+            }
+          })
+        }, prompt: true
+      })
+    }
+  },
+
+  //点击播放视频
+  playVideo: function (e) {
+    let src = e.target.dataset.video;
+    this.setData({ play: true, video: src});
+  },
+
+  //取消视频
+  cancelVideo: function () {
+    this.setData({ play: false, video: ''});
   }
 })

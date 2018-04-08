@@ -17,8 +17,10 @@ Page({
       heardClass: '',
       meunClass: '',
     },
+    url: '/pages/company/user/scan/scan',
     imageHeight: app.adaptableHeight(),
     imageWidth: [],
+    count: [], //活动访问人数
     type: '' //账号类型 1则为工程师，否则0为非工程师
   },
 
@@ -27,29 +29,30 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+
     wx.getStorage({
       key: 'entryKey',
       success: function(res) {
         //判断用户是否完善账户信息,若没有完善则去完善
+        that.setData({ url: '../activity/list/list' })
         wx.request({
           method: 'GET',
-          url: '' + app.basicUrl + '/customer/queryUserDetailInfoByEntryKey?entryKey=' + res.data+'',
+          url: '' + app.basicUrl + '/customer/queryUserDetailInfoByEntryKey?entryKey=' + res.data + '',
           success: function (response) {
             if (response.data.code === '000000') {
-              that.setData({ type: response.data.data.role})
+              that.setData({ type: response.data.data.role });
               if (response.data.data.email === '' || response.data.data.email === null) {
                 wx.getStorage({
                   key: 'count',
-                  success: function(res) {
-                    if ((new Date().getTime() - parseInt(res.data)) / 3600000 > 24) {
-                      console.log((new Date().getTime() - parseInt(res.data)) / 3600000)
+                  success: function (res) {
+                    if ((new Date().getTime() - parseInt(res.data)) / 3600000 > 2) {
+                      wx.setStorage({ key: 'count', data: new Date().getTime() })
                       wx.navigateTo({ url: '../company/user/info/info' })
                     }
-                    wx.setStorage({key: 'count',data: new Date().getTime()})
                   },
                   fail: function () {
                     wx.setStorage({ key: 'count', data: new Date().getTime() })
-                    wx.navigateTo({ url: '../company/user/info/info'})
+                    wx.navigateTo({ url: '../company/user/info/info' })
                   }
                 })
               }
@@ -57,6 +60,18 @@ Page({
           }
         })
       },
+    })
+
+    that.getVoteJoinCount(1).then(count => {
+      let num = that.data.count;
+      num[0] =count;
+      that.setData({ count: num})
+    })
+
+    that.getVoteJoinCount(2).then(count => {
+      let num = that.data.count;
+      num[1] = count;
+      that.setData({ count: num })
     })
   },
 
@@ -105,8 +120,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      console.log(res.target)
+    }
+    return {
+      title: '您的展会小助手已就位！带走，不谢',
+      path: '/pages/index/index',
+      imageUrl: 'https://api.zlwon.com/upload/15226/share-1522654362614.jpg',
+      success: function (res) {
+      },
+      fail: function (res) {
+      }
+    }
   },
 
   //公共头部组件右侧按钮点击事件  跳转至工程师登录页
@@ -123,5 +149,20 @@ Page({
     let data = this.data.imageWidth, count = e.target.dataset.count, ratio = e.detail.width / e.detail.height; 
     data[parseInt(count)] = ratio * 100;
     this.setData({ imageWidth: data}) 
+  },
+
+  //获取活动浏览人数
+  getVoteJoinCount: function (activityId) {
+    return new Promise(function (resolve, reject) {
+      wx.request({
+        method: 'GET',
+        url: '' + app.basicUrl + '/voteActivity/queryVoteJoinCount?activityId=' + activityId+'',
+        success: function (response) {
+          if (response.data.code === '000000') {
+            resolve(response.data.data);
+          }
+        }
+      })
+    });
   }
 })

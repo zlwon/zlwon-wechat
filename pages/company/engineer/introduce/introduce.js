@@ -96,5 +96,16 @@ Page({
     wx.makePhoneCall({
       phoneNumber: e.target.dataset.phone
     })
-  }
+  },
+
+  //点击查看工程师头像大图
+  previewImage: function () {
+    if (this.data.list !== null && this.data.list.headerimg !== null) {
+      wx.previewImage({
+        current: '',
+        urls: [this.data.list.headerimg]
+      })
+    } 
+  
+  },
 })
