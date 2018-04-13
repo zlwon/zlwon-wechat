@@ -25,11 +25,11 @@ l-->
   <!-- 产品展示 -->
   <view class="product clearfix">
     <navigator wx:for="{{list.dataList}}" wx:key="{{index}}" url="../apply/detail?id={{item.id}}&cid={{item.exhibitionCaseId}}" class="p-list" hover-class="hover">
-      <view><image mode="center" src="{{item.photo}}"></image></view>
+      <view><image src="{{item.photo}}"></image></view>
 
       <text class="p-txt">{{item.title}}</text>
 
-      <view class="p-txt gray">材料规格<text>{{item.specName}}</text></view>
+      <view class="p-txt gray">{{item.specName || '暂无'}}</view>
     </navigator>
   </view>
 

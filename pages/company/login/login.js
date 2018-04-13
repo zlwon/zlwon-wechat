@@ -22,23 +22,12 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          wx.request({
-            method: "POST",
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            url: "" + app.basicUrl+"/weChat/requestOpenIdByLoginCode",
-            data: { appid: app.appID, secret: app.secret, js_code: res.code, grant_type: 'authorization_code'},
-            success: function (response) {
-              if (response.data.code === '000000') {
-                that.setData({entryKey: response.data.data});
-              }
-            }
-          })
-        }
+    
+    app.isLogin({
+      success: function (entryKey) {
+        that.setData({ entryKey: response.data.data });
       }
-    });
+    })
   },
 
   /**

@@ -39,6 +39,8 @@ l-->
     <view class="green weight">扫描结果如下，确认无误后提交注册：</view>
 
     <view class="list">
+      <view class="error">若扫描失败就手动填写信息吧</view>
+
       <view>
         <!-- 默认状态 -->
         <view class="default" hidden="{{edit[0]}}"><i>手机 : </i>{{phone}}<icon class="iconfont icon-bianji" data-count="0" bindtap="editInfo"></icon></view>

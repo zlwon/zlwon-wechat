@@ -14,6 +14,7 @@ Page({
       heardClass: 'icon-iconfonthome0',
       meunClass: 'icon-user',
     },
+    imageHeight: app.adaptableHeight(),
     id: '', //应用详情id
     exhibitionCaseId: '', //展会id
     list: {},
@@ -106,8 +107,15 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    const that = this;
+    if (res.from === 'button') {
+     
+    }
+    return {
+      title: '有趣的应用案例供你参考',
+      path: app.getPageUrl(getCurrentPages(), { id: that.data.id, cid: that.data.exhibitionCaseId})
+    }
   },
 
   //公共头部组件左侧按钮点击事件 跳转至首页
@@ -216,9 +224,18 @@ Page({
 
   tapLeavel: function (e) {
     let count = this.data.count, startX = parseInt(this.data.pageX), lastX = parseInt(e.changedTouches[0].pageX), startY = parseInt(this.data.pageY), lastY = parseInt(e.changedTouches[0].pageY);
-    if (startY - lastY < 12 || lastX - startY < 12) {
+    if (Math.abs(startY - lastY) < 20) {
       startX - lastX >= 48 ? count++ : -(startX - lastX) >= 48 ? count-- : '';
       count > 2 ? this.setData({ count: 0 }) : count < 0 ? this.setData({ count: 2 }) : this.setData({ count: count });
     }
+  },
+
+  //点击预览图片
+  previewImages: function () {
+    var that = this; 
+    wx.previewImage({
+      current: '', 
+      urls: that.data.list.album
+    })
   }
 })

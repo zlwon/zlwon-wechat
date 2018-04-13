@@ -25,9 +25,6 @@ Page({
    */
   onLoad: function (options) {
     this.setData({aid: options.aid});
-    app.isLogin({success: function (entryKey) {
-      app.getRecord(getCurrentPages(), options, '创建活动页面', entryKey)
-    }})
   },
 
   /**
@@ -159,9 +156,9 @@ Page({
 
   //选择图片或视频
   chooseList: function () {
-    const that = this;
+    const that = this, list = that.data.aid === '3' ? ['添加图片'] : ['添加图片', '添加视频'];
     wx.showActionSheet({
-      itemList: ['添加图片', '添加视频'],
+      itemList: list,
       success: function (res) {
         if (parseInt(res.tapIndex) === 0) {
           that.chooseImage()
@@ -174,9 +171,10 @@ Page({
 
   //预览图片
   previewImage: function () {
+    console.log(this.data.image);
     wx.previewImage({
       current: '',
-      urls: [this.data.image]
+      urls: [this.data.fileUrl]
     })
   },
 
@@ -188,28 +186,26 @@ Page({
     } else if (that.data.fileUrl === '') {
       wx.vibrateLong({ success: function () { wx.showToast({ title: '请上传图片或视频', icon: 'none', duration: 1500 })}})
     }else {
-      app.isLogin({
-        success: function (entryKey) {
-          wx.request({
-            method: 'POST',
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            url: '' + app.basicUrl + '/voteActivity/addVoteProjectUpload',
-            data: { aid: that.data.aid, fileUrl: that.data.fileUrl, fileType: that.data.fileType, fileFormat: that.data.fileFormat, title: that.data.content, entryKey: entryKey },
-            success: function (response) {
-              if (response.data.code === '000000') {
-                wx.showToast({ title: '添加成功', icon: 'none' })
-                setTimeout(() => {
-                  wx.redirectTo({
-                    url: '/pages/activity/list/list?aid=' + that.data.aid + '',
-                  })
-                }, 1500)
-              } else {
-                wx.showToast({ title: response.data.message, icon: 'none' })
-              }
+      app.isLogin({success: function (entryKey) {
+        wx.request({
+          method: 'POST',
+          header: { 'content-type': 'application/x-www-form-urlencoded' },
+          url: '' + app.basicUrl + '/voteActivity/addVoteProjectUpload',
+          data: { aid: that.data.aid, fileUrl: that.data.fileUrl, fileType: that.data.fileType, fileFormat: that.data.fileFormat, title: that.data.content, entryKey: entryKey },
+          success: function (response) {
+            if (response.data.code === '000000') {
+              wx.showToast({ title: '添加成功', icon: 'none' })
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: '/pages/activity/list/list?aid=' + that.data.aid + '',
+                })
+              }, 1500)
+            } else {
+              wx.showToast({ title: response.data.message, icon: 'none' })
             }
-          })
-        }
-      })
+          }
+        })
+      }})
     }
   },
 

@@ -130,3 +130,7 @@
 .register button:active {
   background: #003300;
 }
+
+.error {
+  color: red;
+}

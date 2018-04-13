@@ -6,7 +6,7 @@ l-->
 
  <view class="{{type !== 0 ? 'container' : ''}}">
   <!-- 横幅 -->
-   <view class="banner"><navigator hover-class="" url="../poster/poster"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/banner.jpg"></image></navigator></view>  
+   <view class="banner"><navigator hover-class="none" url="../activity/list/list?aid=3"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/banner.jpg"></image></navigator></view>  
 
   <!-- 轮播 -->
   <view class="carousel">
@@ -23,12 +23,10 @@ l-->
   <view class="activity">
     <view class="prize">
       <view class="title">参与活动赢奖品</view>
-
-      <navigator url="../activity/detail/detail?id=2" hover-class="none"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/activity.jpg"></image></navigator>
     </view>
 
-    <view class="a-list">
-      <navigator class="clearfix" url="{{url}}?aid=1" hover-class="none">
+    <view class="a-list first">
+      <navigator class="clearfix" url="../activity/list/list?aid=1" hover-class="none">
         <view class="">评选最美展女郎</view>
 
         <view class="gray overflow-point">展商小姐姐晒美照喽，快来围观啦</view>
@@ -40,7 +38,7 @@ l-->
     </view>
     
     <view class="a-list">
-      <navigator class="clearfix" hover-class="none" url="{{url}}?aid=2">
+      <navigator class="clearfix" hover-class="none" url="../activity/list/list?aid=2">
         <view class="">寻找最炫酷展品</view>
 
         <view class="gray overflow-point">人人都能参与的"寻宝"活动拍名片按钮改成“拍名片快速注册”</view>
@@ -50,6 +48,8 @@ l-->
         <image class="second" src="https://api.zlwon.com/upload/15221/exhibits.png" style="width: {{imageWidth[1]}}px" data-count="1" bindload="adaptableWidth"></image>
       </navigator>
     </view>
+
+    <view class="prize"><navigator url="../activity/detail/detail?id=2" hover-class="none"><image mode="widthFix" src="https://api.zlwon.com/upload/15221/activity.jpg"></image></navigator></view>
   </view>
 
   <!-- 展商 -->
@@ -57,26 +57,12 @@ l-->
     <view class="title">热门展商</view>
 
     <scroll-view class="e-list" scroll-x="true">
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark1.png"></image><text class="block">7.2J81</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark2.png"></image><text class="block">7.2D41</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark3.png"></image><text class="block">7.2B61</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark4.png"></image><text class="block">82E63</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark1.png"></image><text class="block">7.2J81</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark2.png"></image><text class="block">7.2D41</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark3.png"></image><text class="block">7.2B61</text></view>
-
-      <view><image mode="center" src="https://api.zlwon.com/upload/15221/trademark4.png"></image><text class="block">82E63</text></view>
+      <view wx:for="{{14}}" wx:key="{{index}}"><image mode="aspectFit" src="https://api.zlwon.com/upload/systemImg/trademark{{item + 1}}.png"></image><text class="block">7.2J81</text></view>
     </scroll-view>
   </view>
 
   <!-- 扫码 -->
-  <navigator wx:if="{{type === ''}}" hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-paizhao"></i>拍名片快速注册</navigator>
+  <navigator wx:if="{{type === '' || type == 3}}" hover-class="active" class="code" url="../company/user/scan/scan"><i class="iconfont icon-paizhao"></i>拍名片快速注册</navigator>
 
-  <navigator wx:if="{{type !== 0 && type !== ''}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
+  <navigator wx:if="{{type !== 0 && type !== 3 && type !== ''}}" hover-class="active" class="code" url="../company/questions/questions">进入工程师问题列表</navigator>
  </view>

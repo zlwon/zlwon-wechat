@@ -79,6 +79,19 @@
   margin-bottom: 6px;
 }
 
+.list .txt button {
+  background: none;
+  border: 1px solid #fff;
+  padding: 0;
+  line-height: 20px;
+  font-size: 20px;
+  -webkit-appearance: none;
+}
+
+.list .txt button::after {
+  border: 1px solid #fff;
+}
+
 .list .blue {
   color: #5945ef;
 }
@@ -252,4 +265,22 @@
   top: 40%;
   left: 0;
   background: white;
+}
+.sort {
+  line-height: 34px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  color: #999;
+  background: #eee;
+}
+
+.sort i {
+  position: relativ;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.sort i::before {
+  position: absolute;
+  right: 7px;
 }

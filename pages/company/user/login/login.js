@@ -21,24 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const that = this;
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          wx.request({
-            method: "POST",
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            url: "" + app.basicUrl + "/weChat/requestOpenIdByLoginCode",
-            data: { appid: app.appID, secret: app.secret, js_code: res.code, grant_type: 'authorization_code' },
-            success: function (response) {
-              if (response.data.code === '000000') {
-                that.setData({ entryKey: response.data.data});
-              }
-            }
-          })
-        }
-      }
-    });
+    
   },
 
   /**
@@ -116,24 +99,42 @@ Page({
   confirmLogin: function () {
     if (this.isValidator()) {
       const that = this;
-      wx.request({
-        method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
-        url: '' + app.basicUrl+'/manage/loginCommonCustomer',
-        data: { loginName: that.data.account, password: that.data.password, entryKey: that.data.entryKey},
-        success: function (response) {
-          if (response.data.code === '000000') {
-            wx.setStorage({ key: "entryKey", data: that.data.entryKey })
-            wx.showToast({ title: '登录成功', icon: 'none' })
-            setTimeout(() => { wx.reLaunch({ url: '/pages/index/index'})}, 1500)
-          } else {
-            wx.showToast({ title: response.data.message, icon: 'none' })
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              method: "POST",
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              url: "" + app.basicUrl + "/weChat/requestOpenIdByLoginCode",
+              data: { appid: app.appID, secret: app.secret, js_code: res.code, grant_type: 'authorization_code', entryKey: ''},
+              success: function (res) {
+                if (res.data.code === '000000') {
+                  wx.request({
+                    method: 'POST',
+                    header: { 'content-type': 'application/x-www-form-urlencoded' },
+                    url: '' + app.basicUrl + '/manage/loginCommonCustomer',
+                    data: { loginName: that.data.account, password: that.data.password, entryKey: res.data.data.entryKey },
+                    success: function (response) {
+                      if (response.data.code === '000000') {
+                        wx.setStorage({ key: "entryKey", data: res.data.data.entryKey })
+                        wx.showToast({ title: '登录成功', icon: 'none' })
+                        setTimeout(() => { wx.reLaunch({ url: '/pages/index/index' }) }, 1500)
+                      } else {
+                        wx.showToast({ title: response.data.message, icon: 'none' })
+                      }
+                    },
+                    fail: function () {
+                      wx.showToast({ title: '登录失败,请重试', icon: 'none' })
+                    }
+                  })
+                }else {
+                  wx.showToast({ title: '登录失败', icon: 'none' })
+                }
+              }
+            })
           }
-        },
-        fail: function () {
-          wx.showToast({title: '登录失败,请重试', icon: 'none'})
         }
-      })
+      });
     }
   }
 })

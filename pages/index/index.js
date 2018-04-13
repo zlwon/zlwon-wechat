@@ -6,6 +6,27 @@
 
 const app = getApp()
 
+const updateManager = wx.getUpdateManager()
+
+updateManager.onCheckForUpdate(function (res) {
+
+})
+
+updateManager.onUpdateReady(function () {
+  wx.showModal({
+    title: '更新提示',
+    content: '亲,有新版本哦,是否更新?',
+    confirmText: '更新',
+    cancelText: '稍后再说',
+    success: function (res) {
+      if (res.confirm) {
+        updateManager.applyUpdate()
+      }
+    }
+  })
+
+})
+
 Page({
 
   /**
@@ -17,7 +38,6 @@ Page({
       heardClass: '',
       meunClass: '',
     },
-    url: '/pages/company/user/scan/scan',
     imageHeight: app.adaptableHeight(),
     imageWidth: [],
     count: [], //活动访问人数
@@ -34,7 +54,6 @@ Page({
       key: 'entryKey',
       success: function(res) {
         //判断用户是否完善账户信息,若没有完善则去完善
-        that.setData({ url: '../activity/list/list' })
         wx.request({
           method: 'GET',
           url: '' + app.basicUrl + '/customer/queryUserDetailInfoByEntryKey?entryKey=' + res.data + '',

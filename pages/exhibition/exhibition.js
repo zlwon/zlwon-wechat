@@ -35,22 +35,18 @@ Page({
   onLoad: function (options) {
     const that = this;
     that.setData({id: options.id});
-    app.isLogin({
-      success: function (entryKey) {
-        app.getRecord(getCurrentPages(), options, '展会列表页面', entryKey)
 
-        that.getCaseList('1');
+    that.getCaseList('1');
 
-        wx.request({
-          method: 'GET',
-          url: '' + app.basicUrl + '/exhibition/queryManufacturerById/2/' + entryKey+'',
-          success: function (response) {
-            if (response.data.code === '000000') {
-              that.setData({ producers: response.data.data})
-            }
-          }
-        })
-    }})
+    wx.request({
+      method: 'GET',
+      url: '' + app.basicUrl + '/exhibition/queryManufacturerById/2/121',
+      success: function (response) {
+        if (response.data.code === '000000') {
+          that.setData({ producers: response.data.data })
+        }
+      }
+    })
   },
 
   /**
@@ -94,24 +90,19 @@ Page({
   onReachBottom: function () {
     if (parseInt(this.data.list.pageIndex) < parseInt(this.data.list.totalPage)) {
       const that = this;
-      wx.getStorage({
-        key: 'entryKey',
-        success: function (res) {
-          wx.request({
-            method: 'POST',
-            header: { 'content-type': 'application/x-www-form-urlencoded' },
-            url: '' + app.basicUrl + '/exhibition/searchSpecifyExhibitionCase',
-            data: { currentPage: parseInt(that.data.list.pageIndex) + 1, pageSize: 5, exhibitionId: '2', caseName: that.data.caseName, manufacturerId: that.data.supplier, entryKey: res.data },
-            success: function (response) {
-              if (response.data.code === '000000') {
-                response.data.dataList = that.data.list.dataList.concat(response.data.dataList)
-                that.setData({ list: response.data })
-              } else if (response.data.code === '000008') {
-                wx.reLaunch({ url: '/pages/company/user/scan/scan'})
-              }
-            }
-          })
-        },
+      wx.request({
+        method: 'POST',
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        url: '' + app.basicUrl + '/exhibition/searchSpecifyExhibitionCase',
+        data: { currentPage: parseInt(that.data.list.pageIndex) + 1, pageSize: 5, exhibitionId: '2', caseName: that.data.caseName, manufacturerId: that.data.supplier, entryKey: '121'},
+        success: function (response) {
+          if (response.data.code === '000000') {
+            response.data.dataList = that.data.list.dataList.concat(response.data.dataList)
+            that.setData({ list: response.data })
+          } else if (response.data.code === '000008') {
+            wx.reLaunch({ url: '/pages/company/user/scan/scan' })
+          }
+        }
       })
     }else {
       wx.showToast({title: '没有更多数据喽', icon: 'none'})
@@ -161,21 +152,17 @@ Page({
   //获取案例列表
   getCaseList: function (currentPage) {
     const that = this;
-    wx.getStorage({
-      key: 'entryKey',
-      success: function(res) {
-        wx.request({
-          method: 'POST',
-          header: { 'content-type': 'application/x-www-form-urlencoded' },
-          url: '' + app.basicUrl + '/exhibition/searchSpecifyExhibitionCase',
-          data: { currentPage: currentPage, pageSize: 5, exhibitionId: that.data.id, caseName: that.data.caseName, manufacturerId: that.data.supplier, entryKey: res.data },
-          success: function (response) {
-            if (response.data.code === '000000') {
-              that.setData({list: response.data})
-            }
-          }
-        })
-      },
+    const data = that.data.caseName === '' ? {currentPage: currentPage, pageSize: 5, exhibitionId: that.data.id, manufacturerId: that.data.supplier, entryKey: '121' }: { currentPage: currentPage, pageSize: 5, caseName: that.data.caseName, exhibitionId: that.data.id, manufacturerId: that.data.supplier, entryKey: '121' };
+    wx.request({
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      url: '' + app.basicUrl + '/exhibition/searchSpecifyExhibitionCase',
+      data: data,
+      success: function (response) {
+        if (response.data.code === '000000') {
+          that.setData({ list: response.data })
+        }
+      }
     })
   },
 

@@ -1,27 +1,50 @@
 //app.js
 App({
   basicUrl: 'https://api.zlwon.com/api', //基地址
+  // basicUrl: 'http://193.112.182.183:9095/api', //基地址
 
   appID: 'wx57bd29889b1d393f', //appid
 
   secret: 'b32564703280fbdfb7ff94eee7a0e248', //秘钥
 
-  //判断是否登录 若没有登录跳转至登录页 {success: 'callback方法', prompt: '是否需要弹窗提示'}
+  //获取加密key
+  getEntryKey(entryKey,callback) {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          wx.request({
+            method: "POST",
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+            url: "" + that.basicUrl+"/weChat/requestOpenIdByLoginCode",
+            data: { appid: that.appID, secret: that.secret, js_code: res.code, grant_type: 'authorization_code', entryKey: entryKey },
+            success: function (response) {
+              if (response.data.code === '000000') {
+                wx.setStorage({key: 'entryKey', data: response.data.data.entryKey})
+                if (parseInt(response.data.data.isExist) === 0) {
+                  wx.reLaunch({ url: '/pages/company/user/scan/scan' })
+                }else {
+                  callback(response.data.data.entryKey);
+                }
+              }
+            }
+          })
+        }
+      }
+    });
+  },
+
+  //判断是否登录 没有登录直接生成新的key 默认登录
   isLogin (obj) { 
-    let elem = obj || { success: function () {}, prompt: false};
+    var that = this;
+    let elem = obj || { success: function () {}};
     wx.getStorage({
       key: 'entryKey',
       success: function (res) {
-        return elem.success(res.data) || ''
+        that.getEntryKey(res.data, function (key) { return elem.success(key)})
       },
       fail: function () {        
-        //是否显示提示语句
-        if (elem.prompt) {
-          wx.showToast({ title: '你已下线,请重新登录', icon: 'none' });
-          setTimeout(() => { wx.redirectTo({ url: '/pages/company/user/scan/scan'}) }, 1500)
-        } else {
-          wx.redirectTo({ url: '/pages/company/user/scan/scan'})
-        }
+        that.getEntryKey('', function (key) { return elem.success(key)})
       }
     })
   },

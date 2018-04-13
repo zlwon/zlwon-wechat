@@ -8,13 +8,8 @@
   background: #eee;
 }
 
-.images swiper {
-  height: 226px;
-}
-
 .images image {
   width: 100%;
-  height: 226px;
   background: white;
 }
 
@@ -78,6 +73,20 @@
     width: 28%;
     color: #333;
     background: #eee;
+  }
+
+  .t-list button {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    line-height: inherit;
+    color: white;
+    font-size: 13px;
+  }
+
+  .t-list button:after{
+    background: none;
+    border: none;
   }
 
   .t-list.bg-orange {

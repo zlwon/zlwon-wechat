@@ -33,24 +33,6 @@ Page({
    //获取百度ocr token
    const that = this;
 
-   wx.login({
-     success: function (res) {
-       if (res.code) {
-         wx.request({
-           method: "POST",
-           header: { 'content-type': 'application/x-www-form-urlencoded' },
-           url: "" + app.basicUrl + "/weChat/requestOpenIdByLoginCode",
-           data: { appid: app.appID, secret: app.secret, js_code: res.code, grant_type: 'authorization_code' },
-           success: function (response) {
-             if (response.data.code === '000000') {
-               that.setData({ entryKey: response.data.data });
-             }
-           }
-         })
-       }
-     }
-   });
-
    wx.request({
      method: 'POST',
      header: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -138,22 +120,18 @@ Page({
           name: 'file',
           success: function (result) {
             if (JSON.parse(result.data).code === '000000') {
-              console.log(result.data);
+              console.log(JSON.parse(result.data).data.mappingUrl);
+              console.log(that.data.entryKey);
               //上传成功请求ocr
               wx.request({
                 method: 'POST',
                 header: { 'content-type': 'application/x-www-form-urlencoded' },
                 url: '' + app.basicUrl + '/scanCard/scanBaiduCloudOcr',
-                data: { url: JSON.parse(result.data).data.mappingUrl, languageType: 'CHN_ENG', detectDirection: false, detectLanguage: false, probability: false, accessToken: that.data.token },
+                data: { url: JSON.parse(result.data).data.mappingUrl, languageType: 'CHN_ENG', detectDirection: false, detectLanguage: false, probability: false, accessToken: that.data.token, entryKey: that.data.entryKey},
                 success: function (response) {
-                  console.log(JSON.stringify(response.data))
                   wx.hideLoading();
                   if (response.data.code === '000000') {
-                    if (response.data.data.mobile === null && response.data.data.mail === null) {
-                      wx.showToast({ title: '扫描失败,请将名片靠近手机重试一下', icon: 'none' })
-                    }else {
-                      that.setData({ state: true, phone: response.data.data.mobile || '', email: response.data.data.mail || '', remark: response.data.data.remark, imageUrl: JSON.parse(result.data).data.mappingUrl })
-                    }
+                    that.setData({ state: true, phone: response.data.data.mobile || '', email: response.data.data.mail || '', remark: response.data.data.remark, imageUrl: JSON.parse(result.data).data.mappingUrl })
                   }else {
                     wx.showToast({title: response.data.message, icon: 'none'})
                   }
@@ -217,23 +195,43 @@ Page({
     const that = this;
     if (that.isValidator()) {
       wx.showLoading({ title: '注册中, 请稍待...', mask: true })
-      wx.request({
-        method: 'POST',
-        header: { 'content-type': 'application/x-www-form-urlencoded' },
-        url: '' + app.basicUrl + '/manage/registerScanCustomer',
-        data: { mobile: that.data.phone, mail: that.data.email, remark: that.data.remark, cardUrl: that.data.imageUrl, entryKey: that.data.entryKey, nickName: that.data.nickName, headerimg: that.data.avatarUrl },
-        success: function (response) {
-          wx.hideLoading();
-          if (response.data.code === '000000') {
-            wx.showToast({ title: '注册成功', icon: 'none' });
-            wx.setStorage({ key: "entryKey", data: that.data.entryKey })
-            setTimeout(() => { wx.redirectTo({ url: '/pages/index/index' }) }, 1500)
-          } else {
-            wx.showToast({ title: response.data.message, icon: 'none' })
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              method: "POST",
+              header: { 'content-type': 'application/x-www-form-urlencoded' },
+              url: app.basicUrl + "/weChat/requestOpenIdByLoginCode",
+              data: { appid: app.appID, secret: app.secret, js_code: res.code, grant_type: 'authorization_code', entryKey: ''},
+              success: function (res) {
+                if (res.data.code === '000000') {
+                  wx.request({
+                    method: 'POST',
+                    header: { 'content-type': 'application/x-www-form-urlencoded' },
+                    url: '' + app.basicUrl + '/manage/registerScanCustomer',
+                    data: { mobile: that.data.phone, mail: that.data.email, remark: that.data.remark, cardUrl: that.data.imageUrl, entryKey: res.data.data.entryKey, nickName: that.data.nickName, headerimg: that.data.avatarUrl },
+                    success: function (response) {
+                      wx.hideLoading();
+                      if (response.data.code === '000000') {
+                        wx.showToast({ title: '注册成功', icon: 'none' });
+                        wx.setStorage({ key: "entryKey", data: res.data.data.entryKey})
+                        setTimeout(() => { wx.redirectTo({ url: '/pages/index/index' }) }, 1500)
+                      } else {
+                        wx.showToast({ title: response.data.message, icon: 'none' })
+                      }
+                    },
+                    fail: function () {
+                      wx.hideLoading();
+                      wx.showToast({ title: '注册失败', icon: 'none' })
+                    }
+                  })
+                } else {
+                  wx.hideLoading();
+                  wx.showToast({ title: '注册失败', icon: 'none' })
+                }
+              }
+            })
           }
-        },
-        fail: function () {
-          wx.showToast({ title: '注册失败', icon: 'none' })
         }
       })
     }

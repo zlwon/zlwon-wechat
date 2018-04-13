@@ -7,7 +7,7 @@ l-->
 <view class="container">
   <!-- 选择照片 -->
   <view class="bg-white">
-    <view class="vote"><textarea bindinput="inputContent" maxlength="50" placeholder="想说点啥...只有50个字哟,亲"></textarea></view>
+    <view class="vote"><textarea bindinput="inputContent" maxlength="50" placeholder="请一句话介绍你自己和公司主营的业务或你上传的产品"></textarea></view>
     
     <view class="camera">
       <icon hidden="{{fileUrl !== ''}}" class="ver-t iconfont weight icon-tianjiazhaopian" bindtap="chooseList"></icon>

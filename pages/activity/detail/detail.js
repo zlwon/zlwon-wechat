@@ -25,6 +25,8 @@ Page({
   onLoad: function (options) {
     const that = this;
     app.isLogin({success: function (entryKey) {
+      app.getRecord(getCurrentPages(), options, '活动详情页', entryKey)
+
       wx.request({
         method: 'GET',
         url: '' + app.basicUrl + '/voteActivity/queryVoteActivityById?id=' + options.id + '&entryKey=' + entryKey+'',
@@ -101,7 +103,7 @@ Page({
 
   tapLeavel: function (e) {
     let count = this.data.count, startX = parseInt(this.data.pageX), lastX = parseInt(e.changedTouches[0].pageX), startY = parseInt(this.data.pageY), lastY = parseInt(e.changedTouches[0].pageY);
-    if (startY - lastY < 12 || lastX - startY < 12) {
+    if (Math.abs(startY - lastY) < 20) {
       startX - lastX >= 48 ? count++ : -(startX - lastX) >= 48 ? count-- : '';
       count > 2 ? this.setData({ count: 0 }) : count < 0 ? this.setData({ count: 2 }) : this.setData({ count: count });
     }
