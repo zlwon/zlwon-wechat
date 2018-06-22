@@ -1,0 +1,52 @@
+<!--
+@Author:       陆飞
+@Date:           2018-05-24
+@Introduce:  问答详情
+l-->
+
+<view class="box">
+  <!-- 标题 -->
+  <view class="title">{{list.title}}</view>
+
+  <!-- 详细 -->
+  <view class="problem">
+    <view class="l-image"><image src="{{list.headerimg}}"></image><label>{{list.nickname}} <text>{{item.intro || '暂无'}}</text></label></view>
+
+    <view wx:if="{{list.infoClass === 1}}" class="weight">此问题关于: <navigator hover-class="none" class="inline" url="/pages/space/detail/detail?id={{list.iid}}">{{list.source}}</navigator></view>
+
+    <view wx:if="{{list.infoClass === 2}}" class="weight">此问题关于: <navigator hover-class="none" class="inline" url="/pages/case/detail/detail?id={{list.iid}}">{{list.source}}</navigator></view>
+
+    <view>{{list.content}}</view>
+
+    <view class="gray">{{list.createTime}} <label class="fr" bindtap="collectProblem"><i class="{{list.isCollect === 1 ? 'orange' : ''}} iconfont icon-shoucang1"></i> 收藏</label></view>
+  </view>
+
+<view class="reply">热门回复</view>
+
+  <!-- 回复 -->
+  <view class="problem" wx:for="{{replayList.dataList}}" wx:key="{{index}}">
+    <view wx-if="{{item.isAnonymous === 1}}" class="l-image"><image src="https://api.zlwon.com/upload/systemImg/defaultUserHeaderImg.png"></image><label class="weight">匿名<text>暂无</text></label></view>
+
+    <view wx-if="{{item.isAnonymous === 0}}" class="l-image"><image src="{{item.headerimg}}"></image><label class="weight">{{item.nickname}}<text>{{item.intro || '暂无'}}</text></label></view>
+
+    <view>{{item.content}}</view>
+
+    <view class="gray">{{item.createTime}}回答 <label class="fr" data-count="{{index}}" bindtap="replayPraise"><i class="{{item.isSupport === 1 ? 'orange' : ''}} iconfont icon-ai45"></i> 赞 {{item.supportNums}}</label></view>
+  </view>
+
+  <!-- 提交 -->
+  <view wx:if="{{show}}" class="send clearfix">
+    <view class="s-input"><input bindinput="bindBlur" bindconfirm="submitReplay" confirm-type="send"/><icon class="iconfont icon-jianpan1" bindtap="switchRecorder"></icon><label wx:if="{{false}}">按住说话 松手完场录音</label></view>
+
+    <view class="s-button" bindtap="submitReplay"><i>{{content === '' ? '取消' : '回答'}}</i></view>
+  </view>
+
+     <!-- 底部工具 -->
+   <view class="tools clearfix">
+    <view class="t-list" hover-class="hover"><navigator hover-class="none" url="/pages/index/index"><i class="iconfont icon-home"></i>首页</navigator></view>
+
+    <view class="t-list bg-orange" hover-class="hover" bindtap="wantToAnswer"><i class="iconfont icon-zixun1"></i>回答</view> 
+
+     <view class="t-list bg-drakgreen" hover-class="hover"><button open-type="share"><i class="iconfont icon-user"></i>分享</button></view> 
+   </view>
+</view>

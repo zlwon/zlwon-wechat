@@ -5,12 +5,5 @@
 l-->
 
 <template name="header">
-  <view class="header clearfix {{border ? 'border' : ''}}">
-    <!-- 返回首页 -->
-    <i class="fl iconfont {{heardClass}}" bindtap="hearTap"></i>
-
-    <image class='logo' src='/static/images/logo1.png'></image>
-
-    <i class="fr iconfont {{meunClass}}" bindtap="meunTap"></i>
-  </view>
+  <view class="header"><navigator hover-class="none" url="/pages/index/index" open-type="reLaunch"><image src="/static/images/logo.png"></image></navigator>{{header}}</view>
 </template >

@@ -1,0 +1,250 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 05 - 23
+@Introduce: 物性列表
+*/
+
+.box {
+  min-height: 100%;
+  /* padding-top: 95px; */
+  padding-bottom: 55px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.box.overflow{
+  height: 100%;
+}
+
+.s-input {
+  display: block;
+  width:96%;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  margin: 10px auto;
+  background: #f3f3f3;
+  border-radius: 22px;
+  box-sizing: border-box;
+}
+
+.s-input label {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+.s-input input {
+  display: inline-block;
+  width: 85%;
+  height: 35px;
+  margin-left: 5px;
+}
+
+.filter {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  background: rgba(242, 242, 242, 1);
+}
+
+.filter label {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+
+.space .s-list {
+  padding: 0 38px 6px 8px;
+  margin-top: 14px;
+  position: relative;
+  border-left: 3px solid rgba(33, 171, 57, 1);
+  background: rgba(242, 242, 242, 1);
+}
+
+.space .s-list>view + view {
+  margin-top: 6px;
+}
+
+.space .s-list view:first-child {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.space .s-list view:first-child icon{
+  margin-left: 5px;
+}
+
+.space .s-list label {
+  display: inline-block;
+  width: 68%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.space .s-list label:first-child {
+  width: 30%;
+}
+
+.space i.iconfont {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.popup {
+  width: 100%;
+  padding-right: 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 8;
+  box-sizing: border-box;
+  -webkit-transition: transform 0.5s;
+  transition: transform 0.5s;
+}
+
+.popup.slide-r {
+  transform: translateX(0%);
+}
+
+.popup.slide-l {
+    transform: translateX(-100%);
+}
+
+.popup .layer {
+  height: 100%;
+  position: relative;
+  padding: 10px 10px 55px 10px;
+  background: white;
+  box-sizing: border-box;
+}
+
+.popup .layer .l-content {
+  height: 90%;
+  overflow-y: auto;
+}
+
+.popup .layer .layer-t {
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  padding-left: 8px;
+  margin-bottom: 10px;
+  position: relative;
+  border-bottom: 1px solid #dcdcdc;
+  box-sizing: border-box;
+}
+
+.popup .layer-t:after {
+  width: 3px;
+  height: 12px;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -6px;
+  background: #21ab39;
+}
+
+.popup .layer label {
+  display: inline-block;
+  margin: 0 6px 8px 0;
+  padding: 4px 12px;
+  background: #eae7e7;
+  border-radius: 5px;
+}
+
+.popup .layer label.active {
+  color: white;
+  background: #21ab39;
+}
+
+.popup .layer radio {
+  display: none;
+}
+
+.popup .layer .btns {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.popup .layer i {
+  display: inline-block;
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.popup .btns .bg-white:active {
+  background: #eae7e7;
+}
+
+.popup .btns .bg-green:active {
+  background: #1f9233
+}
+
+.clamp {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.orange {
+  color: #FF9900;
+}
+
+.tabar {
+  display: table;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: #999;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  background: white;
+  z-index: 2;
+}
+
+.tabar navigator {
+  display: table-cell;
+  width: 33.33%;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.tabar navigator i {
+  display: block;
+  font-size: 20px;
+}
+
+.nothing {
+  line-height: 36px;
+  margin-top: 60px;
+  text-align: center;
+  color: #999;
+}
+
+.nothing image {
+  display: block;
+  width: 150px;
+  height: 61px;
+  margin: 0 auto;
+}

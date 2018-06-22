@@ -1,0 +1,35 @@
+<!--
+@Author:       陆飞
+@Date:           2018-05-22
+@Introduce:  提问
+l-->
+
+ <view class="box">
+  <view wx:if="{{!isShow}}">
+      <input bindinput="inputBlur" maxlength="25" data-key="form.title" placeholder="请输入提问,仅限25个字哦"/>
+
+      <textarea bindinput="inputBlur" maxlength="120" data-key="form.content" placeholder="问题描述非必填,限120个字哦"/>
+
+      <a class="btn" bindtap="showInviteList">提问</a>
+  </view>
+ 
+  <!-- 邀请人 -->
+  <view class="invite" wx:if="{{isShow}}">
+    <text class="title" wx:if="{{invite.length === 0}}">你可以邀请下面用户,快速获得回答</text>
+
+    <text class="title" wx:if="{{invite.length !== 0}}">你邀请了{{invite}}等用户</text>
+
+    <view class="i-list" wx:for="{{inviteList.dataList}}" wx:key="{{index}}">
+      <image src="{{item.headerimg}}"></image>
+      <text class="weight">{{item.nickname}}</text>
+      <text class="gray">{{item.recommendReason}}</text>
+      <i class="{{item.select ? 'active': ''}}" data-count="{{index}}" bindtap="choiceInvite">邀请</i>
+    </view>
+
+    <view class="options">
+      <i bindtap="cancelInvite">取消</i>
+      <i bindtap="submitQuiz">确定邀请</i>
+    </view>
+  </view>
+
+ </view>

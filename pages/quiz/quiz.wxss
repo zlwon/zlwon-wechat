@@ -1,0 +1,110 @@
+/*
+* @Author:       陆飞
+*@Date:           2018-05-22
+*@Introduce:  提问
+* */
+
+.box textarea {
+  width: 100%;
+  padding: 5px 8px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.box input {
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 8px;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.box a.btn {
+  display: block;
+  width: 76%;
+  line-height: 42px;
+  margin: 12px auto;
+  text-align: center;
+  color: white;
+  border-radius: 22px;
+  background: #21AB39;
+}
+
+.invite .title {
+  padding: 8px 12px;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+
+.invite .i-list {
+  padding: 8px 75px 8px 60px;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.invite image {
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  top: 50%;
+  margin-top: -19px;
+  left: 12px;
+  border-radius: 50%;
+}
+
+.invite text {
+  display: block;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.invite .i-list i {
+  width: 54px;
+  height: 26px;
+  line-height: 26px;
+  margin-top: -13px;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  text-align: center;
+  color: #999;
+  border: 1px solid #999;
+}
+
+.invite .i-list i.active {
+  color: white;
+  border: none;
+  background: rgb(23, 203, 212);
+}
+
+.options {
+  margin-top: 15px; 
+  text-align: center;
+}
+
+.options i {
+  display: inline-block;
+  width: 95px;
+  height: 32px;
+  line-height: 32px;
+  box-sizing: border-box;
+}
+
+.options i:first-child {
+  margin-right: 15px;
+  color: #999;
+  border: 1px solid #999;
+}
+
+.options i:last-child {
+  color: white;
+  background: rgb(23, 203, 212);
+}
+

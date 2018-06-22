@@ -1,30 +1,20 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/exhibition/exhibition",
-    "pages/apply/detail",
-    "pages/logs/logs",
-    "pages/property/detail",
-    "pages/company/questions/questions",
-    "pages/company/answer/answer",
-    "pages/company/login/login",
-    "pages/company/user/scan/scan",
-    "pages/company/user/register/register",
-    "pages/company/engineer/introduce/introduce",
-    "pages/consult/detail/detail",
-    "pages/consult/list/list",
-    "pages/activity/list/list",
-    "pages/activity/vote/vote",
-    "pages/company/user/info/info",
-    "pages/error/error",
-    "pages/poster/poster",
-    "pages/activity/detail/detail"
+    "pages/space/list/list",        
+    "pages/index/index"	,
+    "pages/space/detail/detail",
+    "pages/login/login",
+    "pages/case/list/list",
+    "pages/case/detail/detail",
+    "pages/quiz/quiz",
+    "pages/problem/list/list",
+    "pages/problem/detail/detail",
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "橡塑展小助手",
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#21AB39",
+    "navigationBarTextStyle": "white",
     "backgroundColor": "#eee",
     "enablePullDownRefresh": false
   }

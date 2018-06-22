@@ -1,16 +1,16 @@
 <!--
 @Author:       陆飞
 @Date:           2018-05-23
-@Introduce:  首页
+@Introduce:  物性列表
 l-->
 
 <view class="box {{popup !== '' ? 'overflow' : ''}}">
-  <!-- 模糊搜索 -->
+  <!-- 模糊筛选 -->
   <view class="s-input">
-      <label class="gray iconfont icon-fangdajing" bindtap="fuzzySearch"></label>
+    <label class="gray iconfont icon-fangdajing" bindtap="fuzzySearch"></label>
 
-      <input style="color: #333" bindinput="getSearchText" name="caseName" bindconfirm="fuzzySearch" placeholder="请输入规格名称" confirm-type="search"/>
-    </view>
+    <input bindinput="getSearchText" name="caseName" bindconfirm="fuzzySearch" placeholder="请输入规格名称" confirm-type="search"/>
+  </view>
 
   <!-- 筛选 -->
   <view class="filter clearfix">
@@ -22,7 +22,7 @@ l-->
 
   <!-- 物性 -->
   <view class="space">
-    <navigator wx:for="{{list.dataList}}" wx:key="{{index}}" class="s-list" hover-class="none" url="/pages/space/detail/detail?id={{item.id}}">
+    <navigator wx:for="{{list.dataList}}" wx:key="{{index}}" class="s-list" hover-class="none" url="../detail/detail?id={{item.id}}">
       <view>{{item.name}} <text class="gray">[ {{item.brandName}} ]</text> <icon class="{{item.isCollect === 0 ? 'gray' : 'orange'}} iconfont icon-shoucang1"></icon></view>
 
       <view class="gray"><label>基材：{{item.baseMaterial}}</label><label>生产商：{{item.manufacturer}}</label></view>
@@ -82,7 +82,7 @@ l-->
 
   <!-- 公共站底 -->
   <view class="tabar">
-    <navigator open-type="redirect" url="/pages/space/list/list" class="green" hover-class="none"><i class="iconfont icon-biaodanyemian"></i>物性表</navigator>
+    <navigator url="/pages/space/list/list" open-type="redirect" class="green" hover-class="none"><i class="iconfont icon-biaodanyemian"></i>物性表</navigator>
 
     <navigator url="/pages/case/list/list" hover-class="none"><i class="iconfont icon-tukuanli"></i>应用案例</navigator>
 

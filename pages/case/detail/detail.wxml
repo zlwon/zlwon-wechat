@@ -1,0 +1,74 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-05
+@Introduce:  应用详情
+l-->
+
+<view class="box">
+  <!-- 轮播图 -->
+   <view class="images">
+    <swiper style="height:{{imageHeight}}" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" circular="{{true}}">
+         <block wx:for="{{list.album}}" wx:key="{{index}}">
+          <swiper-item>
+            <image style="height:{{imageHeight}}" bindtap="previewImages" src="{{item}}" class="slide-image"/>
+          </swiper-item>
+        </block>
+     </swiper>
+   </view> 
+
+   <!-- 内容 -->
+   <view class="content">
+    <text class="c-title">{{list.title}}</text>
+   </view>
+
+  <view class="parameter">
+      <view class="p-list"><text>应用产品 : </text> {{list.appProduct}}</view>
+
+      <view class="p-list"><text>材料规格 : </text> <navigator class="green" url="../../space/detail/detail?id={{list.sid}}" hover-class="none">{{list.name}}</navigator></view>
+
+      <view class="p-list"><text>基材 : </text> {{list.baseMaterial || ''}}</view>
+
+      <view class="p-list"><text>材料厂商 : </text> {{list.produter || ''}}</view>
+
+      <view class="p-list"><text>终端客户 : </text> {{list.terminal || ''}}</view>
+   </view>
+
+   <!-- 详情 -->
+   <view class="detail" bindtouchstart="tapStart" bindtouchend="tapLeavel">
+    <!-- tabs -->
+    <view class="tabs clearfix">
+      <label><i class="{{count === 0 ? 'active' : ''}}" data-count="0" bindtap="switchTabs">案例背景</i></label>
+      <label><i class="{{count ===1 ? 'active' : ''}}" data-count="1" bindtap="switchTabs">选材需要</i></label>
+      <label><i class="{{count === 2 ? 'active' : ''}}" data-count="2" bindtap="switchTabs">选材原因</i></label>
+      <label><i class="{{count === 3 ? 'active' : ''}}" data-count="3" bindtap="getProblemList">知料问答</i></label>
+    </view>
+
+    <view wx:if="{{count === 0}}" class="d-txt">{{list.setting}}</view>
+
+    <view wx:if="{{count === 1}}" class="d-txt">{{list.selectRequirements}}</view>
+
+    <view wx:if="{{count === 2}}" class="d-txt">{{list.selectCause}}</view>
+
+    <view wx:if="{{count === 3}}" class="problem">
+      <navigator class="s-list" wx:for="{{problemList}}" wx:key="{{index}}" hover-class="none" url="/pages/problem/detail/detail?id={{item.id}}">
+        <view class="weight">此问题关于：{{item.source}}</view>
+
+        <view class="p-image"><image src="{{item.headerimg}}"></image>{{item.nickname}},{{item.intro || '暂无'}}</view> 
+
+        <view class="weight overflow-point">{{item.title}}</view>
+
+        <view class="clamp">{{item.content}}</view>
+      </navigator>
+    </view>
+   </view>
+
+   <!-- 底部工具 -->
+   <view class="tools clearfix">
+    <view class="t-list" hover-class="hover"><navigator url="/pages/index/index" hover-class="none"><i class="iconfont icon-home"></i>首页</navigator></view>
+
+    <view class="t-list bg-orange" hover-class="hover" bindtap="caseQuiz"><i class="iconfont icon-zixun1"></i>提问</view> 
+
+     <view class="t-list bg-drakgreen" hover-class="hover"><button open-type	="share"><i class="iconfont icon-user"></i>分享</button></view> 
+   </view>
+</view>
+

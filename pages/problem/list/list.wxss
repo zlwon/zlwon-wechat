@@ -1,0 +1,75 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 05 - 24
+@Introduce: 问答列表
+*/
+
+.box {
+  min-height: 100%;
+  padding-bottom: 55px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.problem .s-list {
+  padding: 6px 8px;
+  margin-top: 14px;
+  border-left: 3px solid rgba(33, 171, 57, 1);
+  background: rgba(242, 242, 242, 1);
+}
+
+.problem .s-list>view + view {
+  margin-top: 6px;
+}
+
+.problem .s-list .p-image {
+  height: 36px;
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #999; 
+}
+
+.problem .p-image image {
+  width: 36px;
+  height: 36px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.clamp {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.tabar {
+  display: table;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: #999;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  background: white;
+  z-index: 2;
+}
+
+.tabar navigator {
+  display: table-cell;
+  width: 33.33%;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.tabar navigator i {
+  display: block;
+  font-size: 20px;
+}

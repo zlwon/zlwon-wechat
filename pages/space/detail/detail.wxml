@@ -1,0 +1,87 @@
+<!--
+@Author:       陆飞
+@Date:           2018-03-05
+@Introduce:   物性详情
+l-->
+
+<import src="../../../component/header.wxml"/>  
+
+<view class="box">
+   <!-- 内容 -->
+   <view class="content">
+    <text class="c-title">{{list.name}}</text>
+
+    <view class="{{isHidden ? 'c-label' : ''}}">    
+      <label wx:for="{{list.characterTap}}" wx:key="{{index}}" data-count="{{index}}" data-id="{{item.id}}" bindtap="labelCollect">{{item.labelName}}<i class="{{item.isSupport === 1 ? 'green' : 'gray'}} iconfont icon-ai45"></i><i class="green">{{item.hot}}</i></label>
+    </view>
+
+    <view wx:if="{{list.characterTap.length !== 0}}" class="c-more" bindtap="isShowLabel">{{isHidden ? '更多' : '收起'}}<i class="iconfont {{isHidden ? 'icon-tubiao-' : 'icon-shangjiantou'}}"></i></view>
+   </view>
+
+   <view class="parameter">
+      <view class="p-list"><text>生产商 : </text> {{list.manufacturer || ''}}</view>
+
+      <view class="p-list"><text>商标 : </text> {{list.brandName || ''}}</view>
+
+      <view class="p-list"><text>填充物 : </text> {{list.filler || ''}}</view>
+
+      <view class="p-list"><text>安规认证 : </text> {{list.safetyCert || ''}}</view>
+   </view>
+
+   <!-- 详情 -->
+   <view class="detail">
+    <!-- tabs -->
+    <view class="tabs clearfix">
+      <label><i class="{{count ===0 ? 'active' : ''}}" data-count="0" bindtap="switchTabs">物性描述</i></label>
+      <label><i class="{{count ===1 ? 'active' : ''}}" data-count="1" bindtap="getMarketChannel">行情渠道</i></label>
+      <label><i class="{{count === 2 ? 'active' : ''}}" data-count="2" bindtap="getCaseList">经典应用</i></label>
+      <label><i class="{{count === 3 ? 'active' : ''}}" data-count="3" bindtap="getProblemList">知料问答</i></label>
+    </view>
+
+    <view wx:if="{{count === 0}}" class="d-txt">{{list.content}}</view>
+
+    <view class="space" wx:if="{{count === 1}}">
+      <view class="s-list" wx:for="{{channelList}}" wx:key="{{index}}">
+        <view>{{list.name}} <text class="fr green">￥{{item.price}}</text></view>
+
+        <view class="gray"><label>颜色/色号: {{item.color}}</label><label>有效期: {{item.validityDate}}</label></view>
+
+        <view class="gray"><label>付款方式: {{item.payMethod}}</label><label>联系咨询: {{item.linkman}}</label></view>
+
+        <view class="gray">公司简称	: {{item.company}}</view>
+      </view>
+    </view>
+
+    <view class="case" wx:if="{{count === 2}}">
+      <navigator wx:for="{{caseList}}" wx:key="{{index}}" class="c-list" hover-class="none" url="/pages/case/detail/detail?id={{item.id}}">
+
+        <view class="c-image"><image src="{{item.photo}}"></image>{{item.title}}</view>
+
+        <view class="gray"><label>应用行业: {{item.appIndustry}}</label><label>应用市场: {{item.appMarket}}</label></view>
+
+        <view class="gray"><label>产品名称: {{item.appProduct}}</label><label>终端客户: {{item.terminal}}</label></view>
+      </navigator>
+    </view>
+
+    <view wx:if="{{count === 3}}" class="problem">
+      <navigator class="s-list" wx:for="{{problemList}}" wx:key="{{index}}" hover-class="none" url="../../problem/detail/detail?id={{item.id}}">
+        <view class="weight">此问题关于：{{item.source}}</view>
+
+        <view class="p-image"><image src="{{item.headerimg}}"></image>{{item.nickname}},{{item.intro || '暂无'}}</view> 
+
+        <view class="weight overflow-point">{{item.title}}</view>
+
+        <view class="clamp">{{item.content}}</view>
+      </navigator>
+    </view>
+   </view>
+
+  <!-- 底部工具 -->
+   <view class="tools clearfix">
+    <view class="t-list" hover-class="hover"><navigator url="/pages/index/index" hover-class="none"><i class="iconfont icon-home"></i>首页</navigator></view>
+
+    <view class="t-list bg-orange" hover-class="hover" bindtap="openQuiz"><i class="iconfont icon-zixun1"></i>提问</view> 
+
+     <view class="t-list bg-drakgreen" hover-class="hover"><button open-type	="share"><i class="iconfont icon-user"></i>分享</button></view> 
+   </view>
+</view>

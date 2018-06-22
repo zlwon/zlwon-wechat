@@ -1,0 +1,320 @@
+/*
+@Author: 陆飞
+@Date: 2018 - 03 - 05
+@Introduce: 物性详情样式表
+*/
+
+.box {
+  background: #eee;
+}
+
+.content {
+  padding: 10px 12px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.content .c-title {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.c-label {
+  max-height: 70px;
+  overflow: hidden;
+}
+
+  .content label {
+  display: inline-block;
+  margin: 8px 10px 0 0;
+   padding: 4px 5px;
+  background: #eee;
+  box-sizing: border-box;
+  }
+
+  .content .c-more {
+    margin-top: 5px;
+    text-align: right;
+    color: #999;
+  }
+
+  .content i.iconfont {
+    margin-left: 5px;
+    vertical-align: top;
+  }
+
+.parameter {
+  display: block;
+  padding-bottom: 30px;
+  margin-top: 10px;
+  background: white;
+}
+
+.parameter .p-list {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 6px 0 84px;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.p-list text {
+  width: 72px;
+  height: 36px;
+  line-height: 36px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: right;
+}
+
+.detail {
+  margin-top: 10px;
+}
+
+.detail .tabs {
+    background: white;
+}
+
+.detail .tabs  label {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+
+.detail .tabs i {
+  display: inline-block;
+  padding: 8px 12px 4px 12px;
+  box-sizing: border-box;
+}
+
+.detail .tabs navigator {
+   width: 25%;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.detail .tabs .active {
+  border-bottom: 3px solid #21AB39;
+}
+
+.detail .d-txt {
+  margin-top: 6px;
+  padding: 8px 12px 58px 12px; 
+  line-height: 22px;
+  background: white;
+  box-sizing: border-box;
+}
+
+  .tools {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+  }
+
+  .tools .t-list {
+    width: 36%;
+    float: left;  
+    position: relative;
+    color: white;
+    text-align: center;
+  }
+
+  .tools .t-list:first-child {
+    width: 28%;
+    color: #333;
+    background: #eee;
+  }
+
+  .t-list button {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    line-height: inherit;
+    color: white;
+    font-size: 13px;
+  }
+
+  .t-list button:after{
+    background: none;
+    border: none;
+  }
+
+  .t-list.bg-orange {
+    background: #FF9900;
+  }
+
+    .t-list.bg-drakgreen {
+    background: #58DE70;
+  }
+
+  .t-list i {
+    display: inline-block;
+    margin-right: 4px; 
+    font-size: 18px;
+  }
+
+  .tools i.font {
+    font-size: 30px;
+  }
+
+  .tools .t-list i.orange {
+    color: #ff7200;
+  }
+
+  .tools .hover::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.1);
+  }
+
+  .space {
+    min-height: 0.1px;
+    margin-top: 6px;
+  }
+
+.space .s-list {
+  padding: 6px 8px;
+  position: relative;
+  border-left: 3px solid rgba(33, 171, 57, 1);
+  background: white;
+}
+
+.space .s-list:last-child {
+  margin-bottom: 46px;
+}
+
+.space .s-list + .s-list {
+  margin-top: 14px;
+}
+
+.space .s-list>view + view {
+  margin-top: 6px;
+}
+
+.space .s-list view:first-child {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.space .s-list label {
+  display: inline-block;
+  width: 48%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.space i.iconfont {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.case, .problem {
+  min-height: 0.1px;
+  margin-top: 6px;
+}
+
+.case .c-list {
+  padding: 6px 8px;
+  background: white;
+}
+
+.case .c-list:last-child {
+  margin-bottom: 50px;
+}
+
+.case .c-image {
+  height: 32px;
+  line-height: 32px;
+  position: relative;
+  padding-left: 38px;
+  font-weight: bold;
+}
+
+.case .c-image image {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  margin-top: -17.5px;
+  left: 0;
+  border-radius: 50%;
+}
+
+.case .c-list label {
+  display: inline-block;
+  width: 48%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.case .c-list + .c-list {
+  margin-top: 14px;
+}
+
+.case .c-list>view + view {
+  margin-top: 6px;
+}
+
+.problem .s-list {
+  padding: 6px 8px;
+  margin-bottom: 14px;
+  border-left: 3px solid rgba(33, 171, 57, 1);
+  background: white;
+}
+
+.problem .s-list:last-child {
+  margin-bottom: 46px;
+}
+
+.problem .s-list>view + view {
+  margin-top: 6px;
+}
+
+.problem .s-list .p-image {
+  height: 36px;
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #999; 
+}
+
+.problem .p-image image {
+  width: 36px;
+  height: 36px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.clamp {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
